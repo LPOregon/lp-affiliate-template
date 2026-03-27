@@ -1,6 +1,6 @@
 # 05 — Troubleshooting
 
-This guide covers problems that can occur after your site is up and running. For setup problems, see [01 — Getting Started](01-getting-started.md) and [03 — OAuth Setup](03-oauth-setup.md).
+This guide covers problems that can occur after your site is up and running. For setup problems, see [01 — Getting Started](01-getting-started.md) and [03 — CMS Auth Setup](03-cms-auth-setup.md).
 
 ---
 
@@ -29,33 +29,38 @@ If the Actions tab shows no recent runs at all, GitHub Pages may have been accid
 
 ## CMS login stopped working
 
-**Symptom:** Clicking "Login with GitHub" produces an error or loops back to the login screen.
+**Symptom:** Clicking "Sign in with personal access token" produces an error or loops back to the login screen.
 
-**"redirect_uri_mismatch"**
-The callback URL in your OAuth app no longer matches your site URL. This can happen if you added or removed a custom domain. Go to your org's OAuth app settings (org Settings → Developer settings → OAuth Apps) and update the Authorization callback URL to match your current `/admin/` URL exactly, including the trailing slash.
+**"Bad credentials" or "Not Found" error on login:**
+- Make sure the `repo` field in `admin/config.yml` exactly matches your fork (e.g. `YourOrg/your-repo-name`)
+- Make sure your token has Contents: Read and write permission on the correct repository
+- If using a fine-grained token with an org as resource owner, check that the org hasn't blocked fine-grained tokens (org Settings → Personal access tokens)
 
-**"Not authorized" after logging in**
+**"Not authorized" after logging in:**
 The editor's collaborator access to the repo was removed. Re-add them under repo Settings → Collaborators.
 
-**Blank screen or spinner at /admin/**
+**Token expired:**
+Generate a new token following the steps in [03 — CMS Auth Setup](03-cms-auth-setup.md), then paste it in on the next login.
+
+**Blank screen or spinner at /admin/:**
 - Hard-refresh the page (Cmd+Shift+R / Ctrl+Shift+R)
-- Check that `admin/config.yml` still has the correct `repo:` and `client_id:` values
+- Check that `admin/config.yml` still has the correct `repo:` value
 - Confirm the site build is succeeding (check Actions tab)
 
 ---
 
 ## A maintainer left and we're locked out of the CMS
 
-If the departing maintainer was the only org Owner, you may be locked out of managing the OAuth app and repo settings.
+**If the departing maintainer was the only org Owner**, you may be locked out of managing repo settings.
 
 **If you still have a GitHub account with write access to the repo:**
-You can still use the CMS to edit content — CMS access requires only repo write access, not org ownership.
+You can still use the CMS — CMS access requires only repo write access, not org ownership. Generate your own PAT and log in normally.
 
 **If you need to regain org ownership:**
 GitHub allows org members to request ownership if all owners are gone. See [GitHub's documentation on recovering org ownership](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/maintaining-ownership-continuity-for-your-organization).
 
-**If the OAuth app needs to be replaced:**
-An org Owner can delete the old OAuth app and create a new one. Update `client_id` in `admin/config.yml` with the new app's Client ID. All editors will need to re-authorize on next login.
+**To revoke a departed editor's access:**
+Remove their collaborator access under repo Settings → Collaborators. Their personal access token stops working immediately — no further action needed.
 
 **Prevention:** Always keep at least two org Owners. Review the owner list when officers change.
 

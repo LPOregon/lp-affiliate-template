@@ -1,8 +1,6 @@
 # LP Affiliate Site Template
 
-A free, forkable website template for Libertarian Party county and state affiliates. Built with Jekyll, Sveltia CMS, and GitHub Pages.
-
-**Live example:** [multnomahlibertarians.com](https://www.multnomahlibertarians.com) (the site this template is based on)
+A free, forkable website template for Libertarian Party county and state affiliates. Built with Jekyll, Sveltia CMS, and GitHub Pages. See it live at [lporegon.github.io/lp-affiliate-template](https://lporegon.github.io/lp-affiliate-template)
 
 ## What you get
 
@@ -58,7 +56,7 @@ Site identity, social links, and other settings are in `_config.yml` (edit on Gi
 | [02 — GitHub Org Setup](docs/02-github-org-setup.md) | Create account, create org, fork, enable Pages |
 | [03 — CMS Auth Setup](docs/03-cms-auth-setup.md) | Generate a PAT, log into the CMS |
 | [04 — Editing Content](docs/04-editing-content.md) | How to use the CMS, what to edit where |
-| [05 — Adding Candidates](docs/05-adding-candidates.md) | Future feature — not yet implemented |
+| [05 — Troubleshooting](docs/05-troubleshooting.md) | Common problems and how to fix them |
 | [06 — Updating Template](docs/06-updating-template.md) | How to pull in upstream improvements |
 
 ## Succession and recovery
@@ -67,7 +65,7 @@ This template is designed to survive leadership transitions. Key principles:
 
 - **Repo owned by an org, not a person.** Multiple people should have Owner access to the GitHub org. If the webmaster steps down, the next person can take over without losing anything.
 - **No external service dependencies.** The site runs entirely on GitHub Pages. There's no Netlify account, no Cloudflare worker, no database, no paid service that could lapse.
-- **Domain registrar controlled by the org.** Register your domain under the affiliate's name, not an individual's. Make sure at least two officers have registrar login credentials.
+- **Domain registrar controlled by the org.** Make sure at least two officers have registrar login credentials.
 - **Personal access tokens are personal.** Each editor has their own. When someone leaves, remove their collaborator access on the repo — their token stops working immediately.
 
 ### If the original maintainer disappears
@@ -88,4 +86,4 @@ Replace these with your own logo and hero image. Keep the filenames the same, or
 
 ## License
 
-Content template is provided for LP affiliate use. Jekyll, Sveltia CMS, and all dependencies retain their own licenses.
+Content template is CC0. Jekyll, Sveltia CMS, and all dependencies retain their own licenses.
