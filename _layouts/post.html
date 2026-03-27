@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="post-content">
+  <div class="post-header">
+    <p class="eyebrow">{{ site.title }} · News</p>
+    <h1>{{ page.title }}</h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+  </div>
+  <div class="post-body">
+    {{ content }}
+  </div>
+  <div class="post-nav">
+    <a href="{{ '/news' | relative_url }}">← All News & Announcements</a>
+  </div>
+</article>

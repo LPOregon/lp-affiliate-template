@@ -1,0 +1,67 @@
+# =============================================================================
+# Sveltia CMS Configuration
+# =============================================================================
+# After forking, update the "repo" line below to match YOUR fork:
+#   repo: YourGitHubOrg/your-repo-name
+# =============================================================================
+
+backend:
+  name: github
+  repo: LPOregon/lp-affiliate-template
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  # ---------------------------------------------------------------------------
+  # News Posts
+  # ---------------------------------------------------------------------------
+  - name: "posts"
+    label: "News & Announcements"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ---------------------------------------------------------------------------
+  # Site Settings (stored in _data/site.yml)
+  # ---------------------------------------------------------------------------
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "Site Settings"
+        file: "_data/site.yml"
+        fields:
+          # --- Officers -------------------------------------------------------
+          - label: "Officers"
+            name: "officers"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+
+          # --- Monthly Meetup -------------------------------------------------
+          - label: "Meetup"
+            name: "meetup"
+            widget: "object"
+            fields:
+              - { label: "Location name", name: "location", widget: "string" }
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Schedule", name: "day", widget: "string", hint: "e.g. First Thursday of every month" }
+              - { label: "Notes", name: "notes", widget: "text" }
+
+          # --- Libertarian Resources ------------------------------------------
+          - label: "Resources"
+            name: "resources"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }

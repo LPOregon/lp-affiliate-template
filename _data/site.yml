@@ -1,0 +1,44 @@
+# =============================================================================
+# Site Settings — managed by Sveltia CMS at /admin
+# =============================================================================
+# This file is the primary source for all affiliate-configurable content.
+# Edit via the CMS or directly in this file.
+# =============================================================================
+
+# --- Officers -----------------------------------------------------------------
+officers:
+  - name: "Jane Liberty"
+    role: "Chair"
+  - name: "Bob Freedom"
+    role: "Treasurer"
+  - name: "Alice Voluntaryist"
+    role: "Secretary"
+
+# --- Monthly meetup -----------------------------------------------------------
+meetup:
+  location: "Jerkwater Brewing Co."
+  address: "123 Main St, Jerkwater, [State] 00000"
+  time: "6:00 PM"
+  day: "First Thursday of every month"
+  notes: "All peaceful people are welcome — you do not need to be a registered Libertarian or Podunk County resident to attend."
+
+# --- Libertarian resources ----------------------------------------------------
+resources:
+  - name: "Libertarian Party (National)"
+    url: "https://www.lp.org"
+    description: "The national Libertarian Party website."
+  - name: "LP [State]"
+    url: "https://lp[state].org"
+    description: "Your state Libertarian Party."
+  - name: "Institute for Justice"
+    url: "https://ij.org"
+    description: "The national law firm for liberty."
+  - name: "Reason Magazine"
+    url: "https://reason.com"
+    description: "Free minds and free markets."
+  - name: "Foundation for Economic Education"
+    url: "https://fee.org"
+    description: "Making the economic, ethical, and legal case for individual liberty."
+  - name: "Cato Institute"
+    url: "https://www.cato.org"
+    description: "Public policy research promoting individual liberty and limited government."

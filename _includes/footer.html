@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-main">
+      <h3 class="footer-title">{{ site.title }}</h3>
+      <p class="footer-affiliation">{{ site.lp_affiliation_label }}</p>
+      <p class="footer-desc">{{ site.description }}</p>
+    </div>
+    <div class="footer-links">
+      <h4>Connect</h4>
+      <ul>
+        {% if site.facebook %}<li><a href="{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a></li>{% endif %}
+        {% if site.twitter %}<li><a href="{{ site.twitter }}" target="_blank" rel="noopener">Twitter / X</a></li>{% endif %}
+        {% if site.instagram %}<li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a></li>{% endif %}
+        {% if site.facebook_group %}<li><a href="{{ site.facebook_group }}" target="_blank" rel="noopener">Facebook Group</a></li>{% endif %}
+        {% if site.email %}<li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Party Links</h4>
+      <ul>
+        <li><a href="{{ site.lp_national }}" target="_blank" rel="noopener">Libertarian Party (National)</a></li>
+        {% if site.lp_state %}<li><a href="{{ site.lp_state }}" target="_blank" rel="noopener">{{ site.state_party_name }}</a></li>{% endif %}
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. {{ site.paid_for_by }}</p>
+    <p class="footer-attribution">Hero image: "Ideal City" (c. 1470), anonymous, Galleria Nazionale delle Marche. Public domain.</p>
+  </div>
+</footer>

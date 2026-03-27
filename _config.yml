@@ -1,0 +1,50 @@
+# =============================================================================
+# LP Affiliate Site Template — Jekyll Configuration
+# =============================================================================
+# Edit these values to match your affiliate. Most of these are also editable
+# through the CMS at /admin, under Site Settings (stored in _data/site.yml).
+# Values in _data/site.yml override these defaults when present.
+# =============================================================================
+
+# --- Site identity -----------------------------------------------------------
+title: "Podunk Libertarians"
+description: "All Your Freedoms. All the Time. — An LP [State] Affiliate"
+url: "https://your-github-org.github.io"   # Your GitHub Pages URL or custom domain (no trailing slash)
+baseurl: "/lp-affiliate-template"           # Repo name for GitHub Pages; use "" for custom domains
+email: "info@podunklibertarians.org"
+
+# --- Geography & legal -------------------------------------------------------
+geography: "Serving Jerkwater and Unincorporated Podunk"
+lp_affiliation_label: "An LP [State] Affiliate"
+paid_for_by: "Paid for by the Podunk Libertarians PAC"
+
+# --- Social links -------------------------------------------------------------
+twitter: "https://twitter.com/PodunkLiberty"
+facebook: "https://www.facebook.com/PodunkLibertarians"
+instagram: "https://www.instagram.com/podunklibertarians"
+facebook_group: "https://www.facebook.com/groups/your-group-here"
+
+# --- Party links --------------------------------------------------------------
+lp_national: "https://www.lp.org"
+lp_state: "https://lp[state].org"
+state_party_name: "LP [State]"
+
+# --- Donation -----------------------------------------------------------------
+anedot_url: "https://secure.anedot.com/your-org-here"
+
+# --- Mailing list & events ----------------------------------------------------
+mailing_list_url: "https://your-signup-form-here"
+eventbrite_url: "https://www.eventbrite.com/o/your-org-here"
+
+# --- Jekyll build settings (do not change) ------------------------------------
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - docs/
+  - LICENSE

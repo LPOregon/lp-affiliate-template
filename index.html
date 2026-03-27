@@ -1,0 +1,148 @@
+---
+layout: default
+---
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="background-image: url('{{ '/assets/images/skyline.jpg' | relative_url }}');">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <p class="eyebrow">{{ site.geography }}</p>
+      <h1>All Your Freedoms.<br><em>All the Time.</em></h1>
+      <p class="hero-sub">{{ site.description }}</p>
+      <div class="hero-buttons">
+        <a href="#get-involved" class="btn btn-primary">Get Involved</a>
+        <a href="{{ site.anedot_url }}" class="btn btn-secondary" target="_blank" rel="noopener">Donate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALUES STRIP ===== -->
+<section id="values" class="values-strip">
+  <div class="values-container">
+    <div class="value-item">
+      <h3>Individual Liberty</h3>
+      <p>Your life belongs to you. You have the right to live it as you choose.</p>
+    </div>
+    <div class="value-item">
+      <h3>Economic Freedom</h3>
+      <p>Free markets and voluntary exchange create prosperity for all.</p>
+    </div>
+    <div class="value-item">
+      <h3>Personal Responsibility</h3>
+      <p>Liberty and responsibility are inseparable. A free society depends on both.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GET INVOLVED ===== -->
+<section id="get-involved" class="get-involved">
+  <div class="section-container">
+    <h2>Get Involved</h2>
+    <p>Join your local Libertarian community. Stay informed, show up, make a difference.</p>
+    <div class="involve-buttons">
+      <a href="{{ site.mailing_list_url }}" class="btn btn-primary" target="_blank" rel="noopener">Join Our Mailing List</a>
+      <a href="{{ site.anedot_url }}" class="btn btn-secondary" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTY OF PRINCIPLE ===== -->
+<section id="principles" class="principles">
+  <div class="section-container">
+    <h2>The Party of Principle</h2>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <h3>Self-Ownership</h3>
+        <p>Every person has the right to control their own body, speech, actions, and property. No one — including government — may initiate force or fraud against another.</p>
+      </div>
+      <div class="principle-card">
+        <h3>Free Markets</h3>
+        <p>Voluntary exchange and cooperation produce more prosperity and justice than any centrally planned system. Economic freedom is inseparable from personal freedom.</p>
+      </div>
+      <div class="principle-card">
+        <h3>Limited Government</h3>
+        <p>Government exists only to protect individual rights. When it goes beyond that role, it becomes the greatest threat to those rights.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEETUPS ===== -->
+<section id="meetups" class="meetups">
+  <div class="section-container">
+    <h2>Monthly Meetups</h2>
+    <div class="meetup-card">
+      <h3>{{ site.data.site.meetup.day }}</h3>
+      <p class="meetup-time">{{ site.data.site.meetup.time }}</p>
+      <p class="meetup-location">{{ site.data.site.meetup.location }}</p>
+      <p class="meetup-address">{{ site.data.site.meetup.address }}</p>
+      <p class="meetup-notes">{{ site.data.site.meetup.notes }}</p>
+      {% if site.eventbrite_url %}
+        <a href="{{ site.eventbrite_url }}" class="btn btn-primary" target="_blank" rel="noopener">RSVP on Eventbrite →</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWS ===== -->
+<section id="news" class="news-section">
+  <div class="section-container">
+    <h2>News &amp; Announcements</h2>
+    {% for post in site.posts limit:3 %}
+      <article class="news-card">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      </article>
+    {% endfor %}
+    {% if site.posts.size > 3 %}
+      <a href="{{ '/news' | relative_url }}" class="btn btn-secondary">All News →</a>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about">
+  <div class="section-container">
+    <h2>About {{ site.title }}</h2>
+    <p>{{ site.title }} is the local affiliate of the Libertarian Party, {{ site.geography | downcase }}. We advocate for individual liberty, limited government, and free markets at the local level. Whether you're a longtime libertarian or just curious, we welcome you.</p>
+
+    <div class="about-grid">
+      <!-- Officers -->
+      <div class="about-card">
+        <h3>Officers</h3>
+        <ul>
+          {% for officer in site.data.site.officers %}
+            <li><strong>{{ officer.name }}</strong> — {{ officer.role }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Party links -->
+      <div class="about-card">
+        <h3>Party Links</h3>
+        <ul>
+          <li><a href="{{ site.lp_national }}" target="_blank" rel="noopener">Libertarian Party (National)</a></li>
+          {% if site.lp_state %}<li><a href="{{ site.lp_state }}" target="_blank" rel="noopener">{{ site.state_party_name }}</a></li>{% endif %}
+          {% if site.facebook_group %}<li><a href="{{ site.facebook_group }}" target="_blank" rel="noopener">Facebook Group</a></li>{% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESOURCES ===== -->
+<section id="resources" class="resources">
+  <div class="section-container">
+    <h2>Libertarian Resources</h2>
+    <div class="resources-grid">
+      {% for resource in site.data.site.resources %}
+        <a href="{{ resource.url }}" class="resource-card" target="_blank" rel="noopener">
+          <h3>{{ resource.name }}</h3>
+          <p>{{ resource.description }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
