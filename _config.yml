@@ -9,9 +9,9 @@
 # --- Site identity -----------------------------------------------------------
 title: "Podunk Libertarians"
 description: "All Your Freedoms. All the Time. — An LP [State] Affiliate"
-url: "https://your-github-org.github.io"   # Your GitHub Pages URL or custom domain (no trailing slash)
+url: "https://lporegon.github.io"           # Your GitHub Pages URL or custom domain (no trailing slash)
 baseurl: "/lp-affiliate-template"           # Repo name for GitHub Pages; use "" for custom domains
-email: "info@podunklibertarians.org"
+email: "podunk@example.com"
 
 # --- Geography & legal -------------------------------------------------------
 geography: "Serving Jerkwater and Unincorporated Podunk"
