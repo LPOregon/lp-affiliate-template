@@ -77,12 +77,10 @@ This template is designed to survive leadership transitions. Key principles:
 
 ## Assets
 
-| File | Source | Notes |
-|------|--------|-------|
-| `assets/images/logo.png` | [lp.org/resources](https://www.lp.org/resources/) | LP Torch Eagle logo — download from LP national |
-| `assets/images/skyline.jpg` | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Formerly_Piero_della_Francesca_-_Ideal_City_-_Galleria_Nazionale_delle_Marche_Urbino.jpg) | "Ideal City" (c. 1470), anonymous — public domain |
-
-Replace these with your own logo and hero image. Keep the filenames the same, or update the references in `index.html` and `_includes/nav.html`.
+| File | Notes |
+|------|-------|
+| `assets/images/logo.png` | Replace with your own state LP logo |
+| `assets/images/skyline.jpg` | Replace with a public domain photo of your city |
 
 ## License
 
