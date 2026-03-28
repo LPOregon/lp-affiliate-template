@@ -124,7 +124,7 @@ img { max-width: 100%; height: auto; display: block; }
   filter: brightness(0) invert(1);
   display: block;
   flex-shrink: 0;
-  margin-bottom: -4px;
+  margin-bottom: -7px;
 }
 
 .nav-logo span {
