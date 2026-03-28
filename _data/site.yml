@@ -27,12 +27,6 @@ meetup:
 
 # --- Libertarian resources ----------------------------------------------------
 resources:
-  - name: "Libertarian Party (National)"
-    url: "https://www.lp.org"
-    description: "The national Libertarian Party website."
-  - name: "LP [State]"
-    url: "https://lp[state].org"
-    description: "Your state Libertarian Party."
   - name: "Institute for Justice"
     url: "https://ij.org"
     description: "The national law firm for liberty."

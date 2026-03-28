@@ -1,6 +1,6 @@
 # 04 — Editing Content
 
-Once you're logged into the CMS at `/admin/`, you can update all of your affiliate's content without touching any code. This guide walks through each section.
+Once you're logged into the CMS at `/admin/`, you can update your affiliate's content without touching any code. This guide covers what you can edit through the CMS and what requires a direct edit on GitHub.
 
 ---
 
@@ -8,151 +8,158 @@ Once you're logged into the CMS at `/admin/`, you can update all of your affilia
 
 The CMS saves your changes as files in your GitHub repository. After you click **Save**, the site rebuilds automatically — this takes about 60 seconds. Refresh your live site after that wait to see your changes.
 
-**Publish vs. Save:** When editing a News post, you'll see a "Publish" button. For Site Settings, Officers, Meetup, and Resources, use the **Save** button — there's no draft/publish distinction for those.
+**Publish vs. Save:** When editing a News post, you'll see a **Publish** button. For Site Settings, Officers, Meetup, and Resources, use the **Save** button — there's no draft/publish distinction for those.
 
 ---
 
 ## Logging In
 
 1. Go to `https://your-site-url/admin/` (include the trailing slash)
-2. Click **Login with GitHub**
-3. Authorize if prompted
-4. You'll arrive at the CMS dashboard showing your content collections
+2. Click the small arrow (▾) next to "Sign in with GitHub"
+3. Select **Sign in with personal access token**
+4. Paste your token and click Sign In
 
 ---
 
-## Site Settings
+## What You Can Edit in the CMS
 
-**In the CMS sidebar, click "Site Settings"** — this is where you configure everything about your affiliate's identity, appearance, and links.
+The CMS handles content that changes regularly: the hero subheadline, officers, meetup details, resources, and news posts.
 
-Work through the groups in order:
+### Hero Subheadline
 
-### Identity
-- **Affiliate name** — Your full affiliate name, e.g. "Podunk Libertarians"
-- **Tagline** — Shown in the hero and footer, e.g. "All Your Freedoms. All the Time."
-- **LP affiliation label** — e.g. "An LP [State] Affiliate"
-- **Geography line** — Shown in the hero eyebrow, e.g. "Serving Jerkwater and Unincorporated Podunk"
-- **Contact email** — Used in the footer and About section
-- **Paid-for-by line** — Legal disclaimer shown in the footer, e.g. "Paid for by the Podunk Libertarians PAC"
+**In the CMS sidebar, click "Site Settings."**
 
-### Hero
-- **Headline line 1** — First line of the large hero text
-- **Headline line 2** — Second line (italic by default)
-- **Subheadline** — Paragraph beneath the headline
-- **CTA button 1 label and URL** — Primary call to action (typically your mailing list signup)
-- **CTA button 2 label and URL** — Secondary call to action (typically your donate link)
-
-### Branding
-- **Logo** — Upload your logo image. PNG with transparent background works best. Displays in the navigation bar.
-- **Hero background image** — Upload a photo or image for the hero section background. Landscape orientation, at least 1200px wide.
-
-### Social
-- **Twitter/X URL** — Full URL, e.g. `https://twitter.com/PodunkLiberty`
-- **Facebook URL** — Your affiliate's Facebook page URL
-- **Instagram URL** — Your affiliate's Instagram profile URL
-- **Facebook Group URL** — If you have a separate Facebook group for members/events
-
-Leave any social fields blank if you don't use that platform — the icon will not appear in the footer.
-
-### Donation
-- **Donate URL** — Your Anedot or other donation processor URL
-- **Donate button label** — e.g. "Donate" or "Donate Now"
-- **Tax credit note** — Optional. Some states have political contribution tax credits. If yours does, enter the note text here (e.g. "Oregon residents may qualify for a political tax credit."). Leave blank if not applicable.
-
-### Mailing List
-- **Mailing list URL** — The URL of your signup form (Google Form, Mailchimp, etc.)
-- **Mailing list button label** — e.g. "Join Our List" or "Get Updates"
-
-### Events
-- **Events URL** — Your Eventbrite or Luma event page URL. This is used for the "RSVP" button on the meetup card.
-
-  > **Eventbrite or Luma?** Both work. When someone RSVPs on either platform, they receive an email confirmation with a calendar (.ics) attachment — so attendees get calendar integration automatically without any embed on your site.
-
-### Party Links
-- **State party name** — e.g. "LP Oregon" or "LP Texas"
-- **State party URL** — Your state LP's website URL
-- **National party URL** — Defaults to `https://lp.org` — change only if needed
+- **Hero subheadline** — The line of text shown below the main headline in the hero section, and again in the footer. e.g. "A Libertarian Party of Oregon Affiliate"
 
 ---
 
-## Officers
+### Officers
 
-**In the CMS sidebar, click "Officers."**
+**In the CMS sidebar, click "Site Settings," then scroll to Officers.**
 
 Each entry has:
 - **Name** — Officer's full name
 - **Role** — Their title, e.g. "Chair", "Treasurer", "Secretary"
 
-To add an officer: click **New Officers**
-To remove an officer: open their entry and click **Delete**
+To add an officer: click **Add Officers**
+To remove an officer: open their entry and click the delete (trash) icon
 To reorder: drag the entries using the handle on the left
 
 ---
 
-## Meetup Details
+### Meetup Details
 
-**In the CMS sidebar, click "Meetup."**
+**In the CMS sidebar, click "Site Settings," then scroll to Meetup.**
 
 - **Location name** — Venue name, e.g. "Jerkwater Brewing Co."
 - **Address** — Full street address
 - **Time** — e.g. "6:00 PM"
 - **Schedule** — e.g. "First Thursday of every month"
-- **Notes** — Any additional information for attendees, e.g. "All peaceful people welcome — you do not need to be a registered Libertarian to attend."
+- **Notes** — Any additional information for attendees
 
 ---
 
-## Resources
+### Resources
 
-**In the CMS sidebar, click "Resources."**
+**In the CMS sidebar, click "Site Settings," then scroll to Resources.**
 
 The Resources section is an external links grid on the homepage. Each entry has:
 - **Name** — Display name for the link
 - **URL** — Full URL
 - **Description** — One or two sentence description shown below the name
 
-To add a resource: click **New Resources**
-To remove one: open it and click **Delete**
+To add a resource: click **Add Resources**
+To remove one: click the delete icon on the entry
 
-Suggested resources to include: LP national, your state LP, LP Wiki, Cato Institute, Reason Magazine, Foundation for Economic Education (FEE), Mises Institute.
+Suggested resources to include: Mises Institute, LP Wiki, Institute for Justice, Reason Magazine, Foundation for Economic Education (FEE).
 
 ---
 
-## News Posts
+### News Posts
 
 **In the CMS sidebar, click "Posts."**
 
-### Writing a new post
+#### Writing a new post
 1. Click **New Posts**
 2. Enter a **Title**
 3. Set the **Date** (defaults to today)
 4. Write your content in the body area — use the formatting toolbar for headers, bold, links, and lists
 5. Click **Publish** when ready
 
-The post will appear on the homepage (most recent posts shown) and on the `/news` archive page.
+The post will appear on the homepage (three most recent shown) and on the `/news` archive page.
 
-### Editing or deleting a post
+#### Editing or deleting a post
 1. Click **Posts** in the sidebar
 2. Click the post you want to edit
 3. Make changes and click **Save**, or click **Delete** to remove it
 
-### A note on post dates
+#### A note on post dates
 Posts are sorted by date, newest first. If you need to re-sort posts, you can change the date field. Future-dated posts will not appear until that date.
 
-### Example post topics
-- Candidate announcements — "Meet Our 2024 Candidates" with a section per candidate, bio, and campaign link
+#### Example post topics
+- Candidate announcements
 - Event recaps
 - Endorsements or policy statements
 - Officer election results
 
 ---
 
+## What Requires a Direct GitHub Edit
+
+The following settings are in `_config.yml` and are not exposed in the CMS. You'll set most of these once when you first set up the site and rarely need to change them afterward.
+
+To edit `_config.yml`:
+1. Go to your repo on GitHub
+2. Click on `_config.yml`
+3. Click the pencil icon to edit
+4. Make your changes and commit
+
+### Identity
+- `title` — Your affiliate name, e.g. "Podunk Libertarians"
+- `description` — A short description for search engines, e.g. "The Libertarian Party affiliate serving Jerkwater and Unincorporated Podunk"
+- `email` — Your affiliate's contact email
+- `geography` — Shown in the hero eyebrow, e.g. "Serving Jerkwater and Unincorporated Podunk"
+- `lp_affiliation_label` — Shown in the footer, e.g. "A Libertarian Party of Oregon Affiliate"
+- `paid_for_by` — Legal disclaimer shown in the footer, e.g. "Paid for by the Podunk Libertarians PAC"
+
+### URLs
+- `url` — Your GitHub Pages URL or custom domain, e.g. `https://your-org.github.io`
+- `baseurl` — Your repo name, e.g. `/your-repo-name` (use `""` if you have a custom domain)
+
+### Social Links
+- `twitter` — Full URL to your Twitter/X profile
+- `facebook` — Full URL to your Facebook page
+- `instagram` — Full URL to your Instagram profile
+- `facebook_group` — Full URL to your Facebook group (if applicable)
+
+### Party Links
+- `lp_national` — LP national URL (default: `https://www.lp.org`)
+- `lp_state` — Your state LP's URL
+- `state_party_name` — Your state LP's name, e.g. "LP Oregon"
+
+### Donation & Mailing List
+- `anedot_url` — Your Anedot or other donation processor URL
+- `mailing_list_url` — Your signup form URL (Google Form, Mailchimp, etc.)
+- `eventbrite_url` — Your Eventbrite or Luma event page URL
+
+### Images
+Logo and hero background image are not managed through the CMS. To replace them:
+1. Prepare your files:
+   - Logo: save as `logo.png` (PNG with transparent background recommended)
+   - Hero image: save as `skyline.jpg` (landscape, at least 1200px wide)
+2. In your repo, navigate to `assets/images/`
+3. Click **Add file → Upload files**
+4. Upload your images — GitHub will replace the existing files if the names match
+5. Commit the changes
+
+---
+
 ## After Saving
 
-After clicking Save or Publish:
+After clicking Save or Publish in the CMS, or committing a change directly on GitHub:
 
-1. The CMS commits your changes to your GitHub repository
-2. GitHub Actions automatically rebuilds your site (~60 seconds)
-3. Refresh your live site to see the update
+1. GitHub Actions automatically rebuilds your site (~60 seconds)
+2. Refresh your live site to see the update
 
 You can watch the rebuild status at:
 ```
@@ -162,4 +169,4 @@ A green checkmark means the build succeeded. A red X means something went wrong 
 
 ---
 
-**Next:** [05 — Troubleshooting](05-troubleshooting.md) (optional)
+**Next:** [05 — Troubleshooting](05-troubleshooting.md)
