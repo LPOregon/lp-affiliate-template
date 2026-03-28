@@ -112,15 +112,18 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .nav-logo img {
-  height: 40px;
+  height: 36px;
   width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav-logo span {
@@ -129,6 +132,8 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: .5px;
   text-transform: uppercase;
   color: var(--white);
+  line-height: 1;
+  padding-top: 1px;
 }
 
 /* Hamburger toggle — hidden on desktop */
