@@ -38,8 +38,10 @@ layout: default
 <!-- ===== GET INVOLVED ===== -->
 <section id="get-involved" class="get-involved">
   <div class="section-container">
-    <h2>Get Involved</h2>
-    <p>Join your local Libertarian community. Stay informed, show up, make a difference.</p>
+    <div class="get-involved-text">
+      <h2>Get Involved</h2>
+      <p>Join your local Libertarian community. Stay informed, show up, make a difference.</p>
+    </div>
     <div class="involve-buttons">
       <a href="{{ site.mailing_list_url }}" class="btn btn-primary" target="_blank" rel="noopener">Join Our Mailing List</a>
       <a href="{{ site.anedot_url }}" class="btn btn-secondary" target="_blank" rel="noopener">Donate</a>
@@ -89,6 +91,7 @@ layout: default
 <section id="news" class="news-section">
   <div class="section-container">
     <h2>News &amp; Announcements</h2>
+    <div class="news-grid">
     {% for post in site.posts limit:3 %}
       <article class="news-card">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
@@ -96,6 +99,7 @@ layout: default
         <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
       </article>
     {% endfor %}
+    </div>
     {% if site.posts.size > 3 %}
       <a href="{{ '/news' | relative_url }}" class="btn btn-secondary">All News →</a>
     {% endif %}
