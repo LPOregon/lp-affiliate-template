@@ -38,6 +38,12 @@ collections:
         label: "Site Settings"
         file: "_data/site.yml"
         fields:
+          # --- Hero -----------------------------------------------------------
+          - label: "Hero subheadline"
+            name: "hero_sub"
+            widget: "string"
+            hint: "Appears below the main headline in the hero section and in the footer. e.g. 'A Libertarian Party of Oregon Affiliate'"
+
           # --- Officers -------------------------------------------------------
           - label: "Officers"
             name: "officers"

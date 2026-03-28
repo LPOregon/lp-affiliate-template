@@ -3,19 +3,18 @@
 # =============================================================================
 # Edit these values to match your affiliate. Most of these are also editable
 # through the CMS at /admin, under Site Settings (stored in _data/site.yml).
-# Values in _data/site.yml override these defaults when present.
 # =============================================================================
 
 # --- Site identity -----------------------------------------------------------
 title: "Podunk Libertarians"
-description: "All Your Freedoms. All the Time. — An LP [State] Affiliate"
+description: "The Libertarian Party affiliate serving Jerkwater and Unincorporated Podunk."
 url: "https://lporegon.github.io"           # Your GitHub Pages URL or custom domain (no trailing slash)
 baseurl: "/lp-affiliate-template"           # Repo name for GitHub Pages; use "" for custom domains
 email: "podunk@example.com"
 
 # --- Geography & legal -------------------------------------------------------
 geography: "Serving Jerkwater and Unincorporated Podunk"
-lp_affiliation_label: "An LP [State] Affiliate"
+lp_affiliation_label: "A Libertarian Party of [State] Affiliate"
 paid_for_by: "Paid for by the Podunk Libertarians PAC"
 
 # --- Social links -------------------------------------------------------------
