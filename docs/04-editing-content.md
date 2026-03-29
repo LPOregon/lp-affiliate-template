@@ -8,7 +8,7 @@ Once you're logged into the CMS at `/admin/`, you can update your affiliate's co
 
 The CMS saves your changes as files in your GitHub repository. After you click **Save**, the site rebuilds automatically — this takes about 60 seconds. Refresh your live site after that wait to see your changes.
 
-**Publish vs. Save:** When editing a News post, you'll see a **Publish** button. For Site Settings, Officers, Meetup, and Resources, use the **Save** button — there's no draft/publish distinction for those.
+**Publish vs. Save:** When editing a News post, you'll see a **Publish** button. For Site Settings, Officers, Meeting, and Resources, use the **Save** button — there's no draft/publish distinction for those.
 
 ---
 
@@ -23,7 +23,7 @@ The CMS saves your changes as files in your GitHub repository. After you click *
 
 ## What You Can Edit in the CMS
 
-The CMS handles content that changes regularly: the hero subheadline, officers, meetup details, resources, and news posts.
+The CMS handles content that changes regularly: the hero subheadline, officers, meeting details, resources, and news posts.
 
 ### Hero Subheadline
 
@@ -47,9 +47,9 @@ To reorder: drag the entries using the handle on the left
 
 ---
 
-### Meetup Details
+### Meeting Details
 
-**In the CMS sidebar, click "Site Settings," then scroll to Meetup.**
+**In the CMS sidebar, click "Site Settings," then scroll to Meeting.**
 
 - **Location name** — Venue name, e.g. "Jerkwater Brewing Co."
 - **Address** — Full street address
