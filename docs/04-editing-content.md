@@ -139,8 +139,13 @@ To edit `_config.yml`:
 
 ### Donation & Mailing List
 - `anedot_url` — Your Anedot or other donation processor URL
-- `mailing_list_url` — Your signup form URL (Google Form, Mailchimp, etc.)
 - `rsvp_url` — Your Eventbrite, Luma, or other RSVP page URL
+
+**Mailing list — choose one approach, leave the other blank:**
+- `brevo_embed_url` — Paste your Brevo iframe `src` URL here to embed a signup form directly on the page. To get this URL: in your Brevo account go to Contacts → Forms → your form → Share → copy the Iframe code → paste only the URL from the `src="..."` attribute.
+- `mailing_list_url` — A link to an external signup form (Google Form, Mailchimp, etc.). Used when `brevo_embed_url` is blank — shows a "Get Involved" button in the hero that opens the form in a new tab.
+
+If both are blank, the Get Involved button does not appear.
 
 ### Images
 Logo and hero background image are not managed through the CMS. To replace them:

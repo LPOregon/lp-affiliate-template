@@ -5,7 +5,7 @@ A free, forkable website template for Libertarian Party county and state affilia
 ## What you get
 
 - A professional single-page site with all the sections an LP affiliate needs
-- A content editor at `/admin` (Sveltia CMS) — update text, officers, meetup details, resources, and news posts without touching code
+- A content editor at `/admin` (Sveltia CMS) — update text, officers, meeting details, resources, and news posts without touching code
 - Free hosting on GitHub Pages — total cost: **$0** (domain registration only, if you want a custom domain)
 - No external service dependencies — just GitHub
 
@@ -28,9 +28,9 @@ A free, forkable website template for Libertarian Party county and state affilia
 
 ## Site sections
 
-- Hero with background image + mailing list + donate buttons
+- Hero with background image, mailing list signup, and donate button
 - Party of Principle (three pillars)
-- Monthly Meetups (event card + Eventbrite/Luma link)
+- Monthly Meetings (meeting card + RSVP link)
 - News & Announcements (blog posts, archive page)
 - About (intro text, officers card, party links)
 - Libertarian Resources (external links grid)
@@ -41,7 +41,7 @@ A free, forkable website template for Libertarian Party county and state affilia
 Through the admin interface at `/admin`:
 - News posts (create, edit, delete)
 - Officers (names and roles)
-- Meetup details (location, time, schedule, notes)
+- Meeting details (location, time, schedule, notes)
 - Resources (name, URL, description)
 
 Site identity, social links, and other settings are in `_config.yml` (edit on GitHub directly — you'll set these once during setup).
@@ -62,7 +62,7 @@ Site identity, social links, and other settings are in `_config.yml` (edit on Gi
 This template is designed to survive leadership transitions. Key principles:
 
 - **Repo owned by an org, not a person.** Multiple people should have Owner access to the GitHub org. If the webmaster steps down, the next person can take over without losing anything.
-- **No external service dependencies.** The site runs entirely on GitHub Pages. There's no Netlify account, no Cloudflare worker, no database, no paid service that could lapse.
+- **No required external service dependencies.** The site runs entirely on GitHub Pages. There's no Netlify account, no Cloudflare worker, no database, no paid service that could lapse. Optional integrations (Brevo for email signups, Anedot for donations, Eventbrite or Luma for RSVPs) are just links or embeds — the site continues to function if any of them are unavailable.
 - **Domain registrar controlled by the org.** Make sure at least two officers have registrar login credentials.
 - **Personal access tokens are personal.** Each editor has their own. When someone leaves, remove their collaborator access on the repo — their token stops working immediately.
 

@@ -11,12 +11,31 @@ layout: default
       <h1>All Your Freedoms.<br><em>All the Time.</em></h1>
       <p class="hero-sub">{{ site.data.site.hero_sub }}</p>
       <div class="hero-buttons">
-        <a href="{{ site.mailing_list_url }}" class="btn btn-primary" target="_blank" rel="noopener">Get Involved</a>
+        {% unless site.brevo_embed_url == "" or site.brevo_embed_url == nil %}
+          <a href="#signup" class="btn btn-primary">Get Involved</a>
+        {% else %}
+          {% unless site.mailing_list_url == "" or site.mailing_list_url == nil %}
+            <a href="{{ site.mailing_list_url }}" class="btn btn-primary" target="_blank" rel="noopener">Get Involved</a>
+          {% endunless %}
+        {% endunless %}
         <a href="{{ site.anedot_url }}" class="btn btn-secondary" target="_blank" rel="noopener">Donate</a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ===== SIGNUP (Brevo embed — only renders if brevo_embed_url is set) ===== -->
+{% unless site.brevo_embed_url == "" or site.brevo_embed_url == nil %}
+<section id="signup" class="signup-section">
+  <div class="section-container">
+    <h2>Join Our Mailing List</h2>
+    <p>Stay informed on events, news, and actions from {{ site.title }}.</p>
+    <div class="brevo-embed">
+      <iframe src="{{ site.brevo_embed_url }}" width="100%" height="320" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+{% endunless %}
 
 <!-- ===== PARTY OF PRINCIPLE ===== -->
 <section id="principles" class="principles">

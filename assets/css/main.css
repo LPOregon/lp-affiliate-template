@@ -268,6 +268,33 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 12px;
   flex-wrap: wrap;
 }
+/* --- Signup (Brevo embed) --------------------------------------------------- */
+
+.signup-section {
+  background: var(--dark2);
+  border-bottom: 1px solid rgba(254,208,0,.15);
+}
+
+.signup-section .section-container h2 {
+  color: var(--white);
+}
+
+.signup-section .section-container p {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.brevo-embed {
+  max-width: 600px;
+}
+
+.brevo-embed iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
 /* --- Party of Principle ----------------------------------------------------- */
 
 .principles {

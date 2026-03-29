@@ -19,9 +19,9 @@ paid_for_by: "Paid for by the Podunk Libertarians PAC"
 
 # --- Social links -------------------------------------------------------------
 twitter: "https://twitter.com/PodunkLiberty"
-facebook: "https://www.facebook.com/PodunkLibertarians"
+facebook: "https://www.facebook.com/PodunkLibertarians"         # Public page
 instagram: "https://www.instagram.com/podunklibertarians"
-facebook_group: "https://www.facebook.com/groups/your-group-here"
+facebook_group: "https://www.facebook.com/groups/your-group-here"  # Members group (optional)
 
 # --- Party links --------------------------------------------------------------
 lp_national: "https://www.lp.org"
@@ -31,8 +31,13 @@ state_party_name: "LP [State]"
 # --- Donation -----------------------------------------------------------------
 anedot_url: "https://secure.anedot.com/your-org-here"
 
-# --- Mailing list & events ----------------------------------------------------
-mailing_list_url: "https://your-signup-form-here"
+# --- Mailing list (choose one approach, leave the other blank) ----------------
+# Option A: Embed a Brevo signup form directly on the page (lowest friction)
+brevo_embed_url: ""     # Paste your Brevo iframe src URL here
+# Option B: Link to an external signup form (Google Form, Mailchimp, etc.)
+mailing_list_url: ""    # e.g. https://your-signup-form-here
+
+# --- Events -------------------------------------------------------------------
 rsvp_url: "https://www.eventbrite.com/o/your-org-here"
 
 # --- Jekyll build settings (do not change) ------------------------------------
