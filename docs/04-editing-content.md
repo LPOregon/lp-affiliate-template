@@ -147,6 +147,11 @@ To edit `_config.yml`:
 
 If both are blank, the Get Involved button does not appear.
 
+### Analytics (optional)
+- `goatcounter_code` — Your GoatCounter site code for privacy-friendly visitor analytics. GoatCounter is free, requires no cookies, and needs no consent banner. Sign up at [goatcounter.com](https://www.goatcounter.com), then enter your site code here — that's the subdomain portion of your GoatCounter URL (e.g. `podunklp` if your URL is `podunklp.goatcounter.com`). Leave blank to disable analytics entirely.
+
+If your site is already proxied through Cloudflare, you can use Cloudflare Analytics instead — it requires no changes to the template, as tracking is handled at the DNS layer.
+
 ### Images
 Logo and hero background image are not managed through the CMS. To replace them:
 1. Prepare your files:

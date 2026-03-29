@@ -40,6 +40,13 @@ mailing_list_url: ""    # e.g. https://your-signup-form-here
 # --- Events -------------------------------------------------------------------
 rsvp_url: "https://www.eventbrite.com/o/your-org-here"
 
+# --- Analytics (optional) -----------------------------------------------------
+# GoatCounter: free, no cookies, no consent banner required.
+# Sign up at goatcounter.com, then enter your site code (the subdomain part of
+# your GoatCounter URL, e.g. "podunklp" if your URL is podunklp.goatcounter.com)
+# Leave blank to disable analytics entirely.
+goatcounter_code: ""
+
 # --- Jekyll build settings (do not change) ------------------------------------
 markdown: kramdown
 plugins:
