@@ -34,7 +34,7 @@ anedot_url: "https://secure.anedot.com/your-org-here"
 # Option A: Embed a Brevo signup form directly on the page (lowest friction)
 brevo_embed_url: ""     # Paste your Brevo iframe src URL here
 # Option B: Link to an external signup form (Google Form, Mailchimp, etc.)
-mailing_list_url: ""    # e.g. https://your-signup-form-here
+mailing_list_url: "https://your-signup-form-here"
 
 # --- Events -------------------------------------------------------------------
 rsvp_url: "https://www.eventbrite.com/o/your-org-here"
