@@ -33,7 +33,7 @@ anedot_url: "https://secure.anedot.com/your-org-here"
 
 # --- Mailing list & events ----------------------------------------------------
 mailing_list_url: "https://your-signup-form-here"
-eventbrite_url: "https://www.eventbrite.com/o/your-org-here"
+rsvp_url: "https://www.eventbrite.com/o/your-org-here"
 
 # --- Jekyll build settings (do not change) ------------------------------------
 markdown: kramdown

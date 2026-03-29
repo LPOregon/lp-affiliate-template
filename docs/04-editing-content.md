@@ -140,7 +140,7 @@ To edit `_config.yml`:
 ### Donation & Mailing List
 - `anedot_url` — Your Anedot or other donation processor URL
 - `mailing_list_url` — Your signup form URL (Google Form, Mailchimp, etc.)
-- `eventbrite_url` — Your Eventbrite or Luma event page URL
+- `rsvp_url` — Your Eventbrite, Luma, or other RSVP page URL
 
 ### Images
 Logo and hero background image are not managed through the CMS. To replace them:
