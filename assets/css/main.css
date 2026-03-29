@@ -101,7 +101,7 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
   height: 68px;
   display: flex;
   align-items: center;
@@ -310,9 +310,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* --- Get Involved ----------------------------------------------------------- */
 
-.get-involved {
-  background: var(--dark2);
-  border-bottom: 1px solid rgba(254,208,0,.15);
+  background: var(--white);
+  background: var(--white);
+  border-bottom: 1px solid #eee;
 }
 
 .get-involved .section-container {
@@ -327,14 +327,14 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--white);
+  color: var(--dark);
   line-height: 1.1;
   margin-bottom: 10px;
 }
 
 .get-involved-text p {
   font-size: 16px;
-  color: var(--muted);
+  color: var(--mid);
   line-height: 1.7;
   max-width: 480px;
   margin: 0;
@@ -548,7 +548,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* --- About ------------------------------------------------------------------ */
 
 .about {
-  background: var(--cream);
+  background: var(--white);
 }
 
 .about > .section-container > p {
