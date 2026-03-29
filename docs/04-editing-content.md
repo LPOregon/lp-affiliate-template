@@ -145,7 +145,7 @@ To edit `_config.yml`:
 ### Images
 Logo and hero background image are not managed through the CMS. To replace them:
 1. Prepare your files:
-   - Logo: save as `logo.png` (PNG with transparent background recommended)
+   - Logo: save as `logo.png`. PNG format with transparent background is required. The site is designed around the standard LP torch eagle proportions (approximately 200×170px) — images significantly outside these proportions may affect the hero layout.
    - Hero image: save as `skyline.jpg` (landscape, at least 1200px wide)
 2. In your repo, navigate to `assets/images/`
 3. Click **Add file → Upload files**
