@@ -838,5 +838,3 @@ img { max-width: 100%; height: auto; display: block; }
   .post-body { padding: 36px 1.5rem 48px; }
   .post-nav { padding: 0 1.5rem 40px; }
 }
-
-/* Nav toggle JS helper — add/remove .open on .nav-links via JS in default.html */

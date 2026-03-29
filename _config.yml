@@ -13,8 +13,7 @@ baseurl: "/lp-affiliate-template"           # Repo name for GitHub Pages; use ""
 email: "podunk@example.com"
 
 # --- Geography & legal -------------------------------------------------------
-geography: "Serving Jerkwater and Unincorporated Podunk"
-lp_affiliation_label: "A Libertarian Party of [State] Affiliate"
+geography: "Jerkwater and Unincorporated Podunk"
 paid_for_by: "Paid for by the Podunk Libertarians PAC"
 
 # --- Social links -------------------------------------------------------------

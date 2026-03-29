@@ -118,8 +118,7 @@ To edit `_config.yml`:
 - `title` — Your affiliate name, e.g. "Podunk Libertarians"
 - `description` — A short description for search engines, e.g. "The Libertarian Party affiliate serving Jerkwater and Unincorporated Podunk"
 - `email` — Your affiliate's contact email
-- `geography` — Shown in the hero eyebrow, e.g. "Serving Jerkwater and Unincorporated Podunk"
-- `lp_affiliation_label` — Shown in the footer, e.g. "A Libertarian Party of Oregon Affiliate"
+- `geography` — Shown in the hero eyebrow, e.g. "Jerkwater and Unincorporated Podunk"
 - `paid_for_by` — Legal disclaimer shown in the footer, e.g. "Paid for by the Podunk Libertarians PAC"
 
 ### URLs

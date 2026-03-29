@@ -40,10 +40,10 @@ You now have your own copy of the template. All your edits happen here — you'r
 ## Step 5: Enable GitHub Pages
 
 1. In your forked repo, go to **Settings** → **Pages** (left sidebar)
-2. Under "Source," select **Deploy from a branch**
-3. Branch: **main**, folder: **/ (root)**
-4. Click **Save**
-5. Wait about 60 seconds, then refresh — you'll see a URL like `https://your-org.github.io/your-repo-name/`
+2. Under "Source," select **GitHub Actions**
+3. That's it — no branch or folder to configure. The repo already includes a workflow file that handles the build and deploy.
+4. To trigger the first deploy: go to the **Actions** tab, click the workflow on the left, then click **Run workflow → Run workflow**
+5. Wait about 60 seconds — you'll see a URL like `https://your-org.github.io/your-repo-name/`
 
 Your site is now live (with placeholder content).
 
