@@ -14,12 +14,12 @@ Because your fork is your own copy, updates to the upstream template do **not** 
 
 ## Before You Update
 
-1. **Check the changelog** — Before pulling any changes, read the changelog in the upstream template's `README.md` or the [Releases page](https://github.com/LPOregon/lp-affiliate-template/releases) to understand what changed and whether it affects files you've customized.
+1. **Check the changelog** — Before pulling any changes, read [CHANGELOG.md](https://github.com/LPOregon/lp-affiliate-template/blob/main/CHANGELOG.md) or the [Releases page](https://github.com/LPOregon/lp-affiliate-template/releases) to understand what changed and whether it affects files you've customized.
 
 2. **Note which files you've changed** — The files most likely to have your customizations are:
    - `_data/site.yml` (your affiliate content — managed by CMS)
-   - `_config.yml` (your baseurl, url)
-   - `admin/config.yml` (your repo path and OAuth client ID)
+   - `_config.yml` (your url, baseurl, and all affiliate settings)
+   - `admin/config.yml` (your repo path)
    - Any images in `assets/images/`
 
    Template updates are unlikely to touch these files, but check the changelog to be sure.
@@ -86,8 +86,8 @@ These files contain values specific to your fork — **do not overwrite blindly:
 
 | File | What to preserve |
 |---|---|
-| `_config.yml` | Your `url`, `baseurl` |
-| `admin/config.yml` | Your `repo:` path and `client_id:` |
+| `_config.yml` | Your `url`, `baseurl`, and all affiliate settings |
+| `admin/config.yml` | Your `repo:` path |
 | `_data/site.yml` | All of your affiliate content (managed by CMS) |
 | `assets/images/` | Your logo and hero image |
 
