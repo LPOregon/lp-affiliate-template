@@ -28,9 +28,7 @@ A free, forkable website template for Libertarian Party county and state affilia
 
 ## Site sections
 
-- Hero with background image
-- Values strip
-- Get Involved (mailing list + donate buttons)
+- Hero with background image + mailing list + donate buttons
 - Party of Principle (three pillars)
 - Monthly Meetups (event card + Eventbrite/Luma link)
 - News & Announcements (blog posts, archive page)
