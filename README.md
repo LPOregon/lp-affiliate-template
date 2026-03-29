@@ -79,7 +79,7 @@ This template is designed to survive leadership transitions. Key principles:
 
 | File | Notes |
 |------|-------|
-| `assets/images/logo.png` | Replace with your own state LP logo |
+| `assets/images/logo.png` | Replace with your own county LP logo |
 | `assets/images/skyline.jpg` | Replace with a public domain photo of your city |
 
 ## License
