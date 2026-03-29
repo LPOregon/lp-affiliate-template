@@ -268,46 +268,6 @@ img { max-width: 100%; height: auto; display: block; }
   gap: 12px;
   flex-wrap: wrap;
 }
-
-/* --- Values strip ----------------------------------------------------------- */
-
-.values-strip {
-  background: var(--yellow);
-  padding: 0;
-}
-
-.values-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 3rem;
-  display: flex;
-  gap: 0;
-  justify-content: center;
-}
-
-.value-item {
-  flex: 1;
-  padding: 16px 28px;
-  border-right: 1px solid rgba(0,0,0,.12);
-}
-
-.value-item:last-child { border-right: none; }
-
-.value-item h3 {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--dark);
-  margin-bottom: 5px;
-}
-
-.value-item p {
-  font-size: 15px;
-  color: rgba(42,42,45,.75);
-  line-height: 1.5;
-}
-
 /* --- Party of Principle ----------------------------------------------------- */
 
 .principles {
@@ -824,9 +784,6 @@ img { max-width: 100%; height: auto; display: block; }
   .hero-content { padding: 48px 1.5rem; }
 
   /* Values strip */
-  .values-container { flex-direction: column; padding: 16px 1.5rem; }
-  .value-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,.12); padding: 14px 0; }
-  .value-item:last-child { border-bottom: none; }
 
   /* Sections */
   .section-container { padding: 48px 1.5rem; }
