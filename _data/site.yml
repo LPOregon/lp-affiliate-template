@@ -24,6 +24,9 @@ meetup:
   time: "6:00 PM"
   day: "First Thursday of every month"
   notes: "All peaceful people are welcome — you do not need to be a registered Libertarian or Podunk County resident to attend."
+  luma_event_id: ""         # Luma event ID for the RSVP popup button (e.g. evt-abc123). Leave blank to use rsvp_url instead.
+  luma_next_date: ""        # Date of the next event, e.g. "April 3, 2025". Displayed on the meeting card when set.
+  luma_calendar_url: ""     # Your Luma calendar or profile URL (e.g. https://lu.ma/your-handle). Shown as "See all upcoming events" link.
 
 # --- Libertarian resources ----------------------------------------------------
 resources:

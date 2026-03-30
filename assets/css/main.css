@@ -103,10 +103,9 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 0 auto;
   padding: 0 2rem;
   height: 68px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
 }
 
 .nav-logo {
@@ -388,6 +387,28 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 20px;
   padding-top: 12px;
   border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.meetup-next-date {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 4px;
+}
+
+.meetup-all-events {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.meetup-all-events a {
+  color: var(--muted);
+}
+
+.meetup-all-events a:hover {
+  color: var(--white);
 }
 
 /* --- News ------------------------------------------------------------------- */
@@ -769,7 +790,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 768px) {
   /* Nav */
-  .nav-container { padding: 0 1.25rem; }
+  .nav-container { padding: 0 1.25rem; grid-template-columns: 1fr auto; }
   .nav-toggle { display: flex; }
 
   .nav-links {

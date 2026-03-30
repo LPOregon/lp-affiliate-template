@@ -64,11 +64,24 @@ layout: default
     <h2>Monthly Meetings</h2>
     <div class="meetup-card">
       <h3>{{ site.data.site.meetup.day }}</h3>
+      {% if site.data.site.meetup.luma_next_date and site.data.site.meetup.luma_next_date != "" %}
+        <p class="meetup-next-date">Next: {{ site.data.site.meetup.luma_next_date }}</p>
+      {% endif %}
       <p class="meetup-time">{{ site.data.site.meetup.time }}</p>
       <p class="meetup-location">{{ site.data.site.meetup.location }}</p>
       <p class="meetup-address">{{ site.data.site.meetup.address }}</p>
       <p class="meetup-notes">{{ site.data.site.meetup.notes }}</p>
-      {% if site.rsvp_url %}
+      {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
+        <a
+          href="https://lu.ma/event/{{ site.data.site.meetup.luma_event_id }}"
+          class="btn btn-primary"
+          data-luma-action="checkout"
+          data-luma-event-id="{{ site.data.site.meetup.luma_event_id }}"
+        >RSVP →</a>
+        {% if site.data.site.meetup.luma_calendar_url and site.data.site.meetup.luma_calendar_url != "" %}
+          <p class="meetup-all-events"><a href="{{ site.data.site.meetup.luma_calendar_url }}" target="_blank" rel="noopener">See all upcoming events →</a></p>
+        {% endif %}
+      {% elsif site.rsvp_url and site.rsvp_url != "" %}
         <a href="{{ site.rsvp_url }}" class="btn btn-primary" target="_blank" rel="noopener">RSVP →</a>
       {% endif %}
     </div>
