@@ -59,6 +59,7 @@ To reorder: drag the entries using the handle on the left
 - **Luma event ID** — If you use Luma for RSVPs, paste the event ID here (the `evt-…` portion of your event URL). This enables the Luma RSVP popup — attendees can register without leaving your site. Leave blank if you're not using Luma.
 - **Next event date** — Optional. When set (e.g. "April 3, 2025"), the next meeting date is displayed prominently on the meeting card. Update this each month after your event recurs.
 - **Luma calendar URL** — Your Luma calendar or profile page (e.g. `https://lu.ma/your-handle`). When set, a "See all upcoming events" link appears below the RSVP button. Only shown if a Luma event ID is also set.
+- **RSVP URL** — Eventbrite or other RSVP page URL. Used only if Luma event ID is blank. For Eventbrite, your organizer page URL (`eventbrite.com/o/your-org`) is better than a per-event URL — it always shows current events without needing a monthly update.
 
 ---
 
@@ -141,7 +142,6 @@ To edit `_config.yml`:
 
 ### Donation & Mailing List
 - `anedot_url` — Your Anedot or other donation processor URL
-- `rsvp_url` — Fallback RSVP URL for non-Luma events (e.g. an Eventbrite page). Only shown if no Luma event ID is set in the Meeting section of Site Settings. If you're using Luma, set your event details there instead.
 
 **Mailing list — choose one approach, leave the other blank:**
 - `brevo_embed_url` — Paste your Brevo iframe `src` URL here to embed a signup form directly on the page. To get this URL: in your Brevo account go to Contacts → Forms → your form → Share → copy the Iframe code → paste only the URL from the `src="..."` attribute.

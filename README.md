@@ -31,9 +31,9 @@ Depends on which RSVP tool you use:
 4. Update **Next event date** with the display date, e.g. `May 1, 2025`
 5. Click **Save** — the site updates within about 60 seconds
 
-**Eventbrite (organizer page)** — no monthly task. If `rsvp_url` in `_config.yml` points to your Eventbrite organizer page (`eventbrite.com/o/your-org`), that page always lists your current events automatically.
+**Eventbrite (organizer page)** — no monthly task. Set your Eventbrite organizer page URL (`eventbrite.com/o/your-org`) as the RSVP URL in the CMS → Site Settings → Meetup. That page always lists your current events automatically.
 
-**Eventbrite (per-event URLs)** — update `rsvp_url` in `_config.yml` each month to point to the new event URL, then commit the change.
+**Eventbrite (per-event URLs)** — update the RSVP URL in the CMS → Site Settings → Meetup each month to point to the new event.
 
 ## Stack
 
@@ -61,7 +61,7 @@ Through the admin interface at `/admin`:
 - Resources (name, URL, description)
 - Hero subheadline and affiliation label
 
-Site identity, social links, and other settings are in `_config.yml` (edit on GitHub directly — you'll set these once during setup).
+Site identity, social links, and other settings are in `_config.yml` (edit on GitHub directly — you'll set these once during setup). Meeting and RSVP details are in the CMS under Site Settings.
 
 ## Documentation
 

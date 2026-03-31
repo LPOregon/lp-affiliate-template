@@ -37,7 +37,7 @@ brevo_embed_url: ""     # Paste your Brevo iframe src URL here
 mailing_list_url: "https://your-signup-form-here"
 
 # --- Events -------------------------------------------------------------------
-rsvp_url: "https://www.eventbrite.com/o/your-org-here"
+# rsvp_url has moved to _data/site.yml (Meetup section) — edit it in the CMS.
 
 # --- Analytics (optional) -----------------------------------------------------
 # GoatCounter: free, no cookies, no consent banner required.

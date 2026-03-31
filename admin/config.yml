@@ -62,9 +62,10 @@ collections:
               - { label: "Time", name: "time", widget: "string" }
               - { label: "Schedule", name: "day", widget: "string", hint: "e.g. First Thursday of every month" }
               - { label: "Notes", name: "notes", widget: "text" }
-              - { label: "Luma event ID", name: "luma_event_id", widget: "string", required: false, hint: "The event ID from your Luma event URL (e.g. evt-abc123). Enables the Luma RSVP popup button. Leave blank to use the rsvp_url in _config.yml instead." }
+              - { label: "Luma event ID", name: "luma_event_id", widget: "string", required: false, hint: "The event ID from your Luma event URL (e.g. evt-abc123). Enables the Luma RSVP popup button. Leave blank to use the RSVP URL below instead." }
               - { label: "Next event date", name: "luma_next_date", widget: "string", required: false, hint: "Displayed on the meeting card when set, e.g. April 3, 2025. Update each month." }
               - { label: "Luma calendar URL", name: "luma_calendar_url", widget: "string", required: false, hint: "Your Luma calendar or profile URL, e.g. https://lu.ma/your-handle. Shown as a 'See all upcoming events' link." }
+              - { label: "RSVP URL", name: "rsvp_url", widget: "string", required: false, hint: "Eventbrite or other RSVP page URL. Used only if Luma event ID is blank. For Eventbrite, your organizer page URL (eventbrite.com/o/your-org) is better than a per-event URL — it always shows current events." }
 
           # --- Libertarian Resources ------------------------------------------
           - label: "Resources"
