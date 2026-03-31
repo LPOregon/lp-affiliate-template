@@ -144,8 +144,8 @@ To edit `_config.yml`:
 - `anedot_url` — Your Anedot or other donation processor URL
 
 **Mailing list — choose one approach, leave the other blank:**
-- `brevo_embed_url` — Paste your Brevo iframe `src` URL here to embed a signup form directly on the page. To get this URL: in your Brevo account go to Contacts → Forms → your form → Share → copy the Iframe code → paste only the URL from the `src="..."` attribute.
-- `mailing_list_url` — A link to an external signup form (Google Form, Mailchimp, etc.). Used when `brevo_embed_url` is blank — shows a "Get Involved" button in the hero that opens the form in a new tab.
+- `brevo_embed_url` — Brevo only. Embeds a signup form directly on the page via iframe. To get this URL: in your Brevo account go to Contacts → Forms → your form → Share → copy the Iframe code → paste only the URL from the `src="..."` attribute. Leave blank if you're not using Brevo.
+- `mailing_list_url` — A link to an external signup page. Used when `brevo_embed_url` is blank — shows a "Get Involved" button in the hero that opens the page in a new tab. Use this for Mailchimp, Google Forms, or any other service. Note: Mailchimp's embedded forms use a custom HTML/JS snippet that cannot be iframed; a link to your Mailchimp signup page is the correct approach.
 
 If both are blank, the Get Involved button does not appear.
 

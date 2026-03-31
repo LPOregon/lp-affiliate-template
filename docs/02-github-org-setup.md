@@ -92,16 +92,36 @@ Visit `https://your-site-url/admin/` to see the CMS login screen. You'll set up 
 
 ## Optional: Custom domain
 
+If you need to register a domain name, [Porkbun](https://porkbun.com) is a good choice — competitive pricing, no dark-pattern renewal markups, and full ALIAS record support (which simplifies the DNS setup below).
+
 If you have a domain name:
 
 1. In your repo, go to **Settings** → **Pages**
-2. Under "Custom domain," enter your domain (e.g. `www.podunklibertarians.org`)
+2. Under "Custom domain," enter your domain — use the apex form (`podunklibertarians.org`) rather than `www` so both work
 3. Click **Save**
-4. At your domain registrar, add a CNAME record pointing `www` to `your-org.github.io`
-5. Wait for DNS propagation (can take up to 24 hours, usually faster)
-6. Check "Enforce HTTPS" once the domain is verified
+4. At your domain registrar, add DNS records:
 
-Full instructions: [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+   **Apex domain** (`podunklibertarians.org`) — add an ALIAS record (sometimes called ANAME or CNAME flattening):
+   ```
+   ALIAS  @  your-org.github.io
+   ```
+   If your registrar doesn't support ALIAS records, add these four A records instead:
+   ```
+   A  @  185.199.108.153
+   A  @  185.199.109.153
+   A  @  185.199.110.153
+   A  @  185.199.111.153
+   ```
+
+   **www subdomain** — add a CNAME record so `www.podunklibertarians.org` also works:
+   ```
+   CNAME  www  your-org.github.io
+   ```
+
+5. Wait for DNS propagation (usually a few minutes to a few hours; up to 24 hours in rare cases)
+6. Back in repo Settings → Pages, check **Enforce HTTPS** once the domain is verified
+
+Full reference: [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
 
 ## Next step
 
