@@ -9,6 +9,12 @@ A free, forkable website template for Libertarian Party county and state affilia
 - Free hosting on GitHub Pages — total cost: **$0** (domain registration only, if you want a custom domain)
 - No external service dependencies — just GitHub
 
+## Before you start
+
+Setting this up takes an hour or two and involves creating a GitHub org, forking a repo, generating a personal access token, and editing a config file. None of the steps are difficult, but they assume you're comfortable following written instructions and copying values between browser tabs. If that describes you, you'll be fine. If it doesn't, consider pairing with someone technically inclined for the initial setup — after that, day-to-day editing happens entirely in the CMS with no code involved.
+
+This template is maintained on a volunteer basis. Issues and pull requests are welcome, but response times aren't guaranteed. If you run into trouble, start with the [troubleshooting guide](docs/05-troubleshooting.md); if that doesn't help, open an issue on the template repo.
+
 ## Quick start
 
 | Step | Time | Guide |
