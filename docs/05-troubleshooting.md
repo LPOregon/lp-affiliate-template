@@ -23,7 +23,7 @@ This guide covers problems that can occur after your site is up and running. For
 | Build timed out | Re-run the workflow from the Actions tab (click "Re-run jobs") |
 | Error mentioning Ruby, Bundler, or a gem name | See "Build stopped working after a GitHub update" below |
 
-If the Actions tab shows no recent runs at all, GitHub Pages may have been accidentally disabled. Go to Settings → Pages and confirm it's still set to deploy from the `main` branch.
+If the Actions tab shows no recent runs at all, GitHub Pages may have been accidentally disabled. Go to Settings → Pages and confirm the Source is still set to **GitHub Actions**.
 
 ---
 
@@ -105,34 +105,24 @@ The site will rebuild from the restored file.
 
 ## Build stopped working after a GitHub update
 
-**Symptom:** The site was building fine, you didn't change anything, and then builds started failing with errors mentioning Ruby, Bundler, or a specific gem name like `ffi`, `nokogiri`, or `github-pages`.
+**Symptom:** The site was building fine, you didn't change anything, and then builds started failing with errors mentioning Ruby, Bundler, or a specific gem name like `ffi`, `nokogiri`, or `jekyll`.
 
-GitHub periodically updates the Pages build environment. When this happens, the gem versions pinned in your `Gemfile.lock` may no longer be compatible. The live site continues to serve your last successful build, but new changes won't publish until the build is fixed.
+This is rare. The template pins Ruby to version 3.3 and installs gems from your `Gemfile.lock`, so routine GitHub infrastructure updates shouldn't affect your build. When gem issues do occur, they're usually caused by one of two things:
 
-**Fix — update your Gemfile.lock:**
+- **A security update is needed.** Dependabot handles this automatically — it opens a pull request that updates `Gemfile.lock` to a patched version. Check your repo's Pull Requests tab for an open Dependabot PR. Merge it and the build should succeed.
+- **Someone manually edited `Gemfile` or `Gemfile.lock`** and introduced a conflict. Revert the edit using the steps in "I accidentally broke a file" above.
 
-*Option A — Copy from the upstream template (no technical skill required)*
+**If neither of those applies and the build still fails:**
 
 Check whether the upstream template's `Gemfile.lock` has been updated recently:
-```
-https://github.com/LPOregon/lp-affiliate-template/commits/main
-```
+https://github.com/LPOregon/lp-affiliate-template/commits/main/Gemfile.lock
+
 If it has, copy the new version into your repo:
 1. Open `Gemfile.lock` in the upstream repo and click **Raw**
 2. Copy all the content
-3. Open `Gemfile.lock` in your repo, click the pencil to edit, paste, and commit
+3. Open `Gemfile.lock` in your repo, click the pencil to edit, paste the new content, and commit
 
-The build should succeed on the next run.
-
-*Option B — Regenerate it yourself (requires a computer with Ruby installed)*
-
-If you or someone in your affiliate is comfortable with a command line, run this in a local copy of your repo:
-```
-bundle update
-```
-Then commit the updated `Gemfile.lock`. This regenerates the lockfile against current gem versions and usually resolves the conflict.
-
-> **Do not run `bundle update` as routine maintenance.** Only do it when the build is actually broken — unnecessary updates can introduce their own incompatibilities.
+If that doesn't resolve it, file an issue on the template repo with a link to the failing build log.
 
 ---
 
