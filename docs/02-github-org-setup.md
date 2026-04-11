@@ -12,7 +12,7 @@ Use a personal email you'll have access to long-term — not a work email that m
 
 An organization lets multiple people manage the repo. This is important for succession — if you step down, the next chair can take over without losing the site.
 
-1. Go to [github.com/organizations/plan](https://github.com/account/organizations/new?plan=free)
+1. Go to [github's create org page](https://github.com/account/organizations/new?plan=free)
 2. Choose the **Free** plan
 3. Organization name: something like `PodunkLibertarians` or `LP-Podunk` (this appears in your site URL if you don't use a custom domain)
 4. Contact email: your affiliate's official email
