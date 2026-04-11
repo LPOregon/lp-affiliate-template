@@ -284,9 +284,7 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 18% 50%, rgba(31, 31, 34, 0.82) 0%, rgba(31, 31, 34, 0.55) 42%, rgba(31, 31, 34, 0.18) 78%, rgba(31, 31, 34, 0.05) 100%),
-    linear-gradient(180deg, rgba(31, 31, 34, 0.18) 0%, rgba(31, 31, 34, 0.55) 100%);
+  background: radial-gradient(ellipse at 22% 50%, rgba(31, 31, 34, 0.86) 0%, rgba(31, 31, 34, 0.58) 38%, rgba(31, 31, 34, 0.15) 72%, rgba(31, 31, 34, 0) 100%);
   display: flex;
   align-items: center;
 }
