@@ -114,4 +114,4 @@ This template is designed to survive leadership transitions. Key principles:
 
 ## License
 
-Content template is CC0. Jekyll, Sveltia CMS, and all dependencies retain their own licenses.
+I don't believe in imaginary property. Content template is CC0. Jekyll, Sveltia CMS, and all dependencies retain their own licenses.
