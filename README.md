@@ -7,7 +7,7 @@ A free, forkable website template for Libertarian Party county and state affilia
 - A professional single-page site with all the sections an LP affiliate needs
 - A content editor at `/admin` (Sveltia CMS) — update text, officers, meeting details, resources, and news posts without touching code
 - Free hosting on GitHub Pages — total cost: **$0** (domain registration only, if you want a custom domain)
-- No external service dependencies — just GitHub
+- No *required* external service dependencies — just GitHub. Donation platform, mailing list, and event RSVP integrations (Anedot, Brevo/Mailchimp, Luma/Eventbrite) are all optional — the site renders cleanly with any or none of them configured
 
 ## Before you start
 
