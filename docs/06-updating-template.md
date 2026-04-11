@@ -56,11 +56,7 @@ For each changed file:
 
 ### Step 4 — Verify the site still builds
 
-After committing, go to your repo's Actions tab:
-```
-https://github.com/your-org/your-repo/actions
-```
-Wait for the build to complete (green checkmark). Then visit your live site and confirm everything looks correct.
+After committing, check the deployment status in your repo's **Deployments** section (right sidebar) or at **Settings → Pages**. Wait for it to show a successful deployment, then visit your live site and confirm everything looks correct.
 
 ---
 
@@ -113,4 +109,4 @@ The fastest path to recovery is to revert the file you just changed:
 4. Edit the file in your repo and paste the previous version back in
 5. Commit — your site will rebuild from the working version
 
-If your build stopped working and you haven't changed anything recently, see [05 — Troubleshooting](05-troubleshooting.md).
+If something still looks wrong after reverting, see [05 — Troubleshooting](05-troubleshooting.md).

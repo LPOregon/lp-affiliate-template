@@ -43,7 +43,7 @@ Depends on which RSVP tool you use:
 
 ## Stack
 
-- **Jekyll 4.3** — static site generator
+- **Jekyll** (via `github-pages` gem) — static site generator, hosted natively on GitHub Pages
 - **Sveltia CMS** — Git-based headless CMS (drop-in Decap CMS replacement, faster and actively maintained)
 - **GitHub Pages** — free static hosting
 - **GitHub PAT authentication** — personal access token, no OAuth app setup required

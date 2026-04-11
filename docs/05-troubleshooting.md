@@ -8,22 +8,16 @@ This guide covers problems that can occur after your site is up and running. For
 
 **Symptom:** You saved something in the CMS but the live site hasn't changed after a few minutes.
 
-1. Check the build status at:
-   ```
-   https://github.com/your-org/your-repo/actions
-   ```
-2. If you see a red X on the latest run, click into it to read the error.
-3. Common causes:
+1. Check the deployment status. In your repo, look for a **Deployments** section in the right sidebar, or go to **Settings → Pages** — it will show whether the last deployment succeeded.
+2. If the deployment failed, GitHub usually shows a brief error description. Common causes:
 
-| Error in the build log | Fix |
+| Error | Fix |
 |---|---|
 | `Invalid date` in a post | Open the post in the CMS and correct the date field |
 | `Liquid syntax error` | A content field contains a `{` or `}` character — escape it or rephrase |
 | `No such file` for an image | An image was referenced in a CMS field but not uploaded — re-upload the image |
-| Build timed out | Re-run the workflow from the Actions tab (click "Re-run jobs") |
-| Error mentioning Ruby, Bundler, or a gem name | See "Build stopped working after a GitHub update" below |
 
-If the Actions tab shows no recent runs at all, GitHub Pages may have been accidentally disabled. Go to Settings → Pages and confirm the Source is still set to **GitHub Actions**.
+If no deployment appears at all, GitHub Pages may have been accidentally disabled. Go to **Settings → Pages** and confirm the Source is still set to **Deploy from a branch** with branch **main** and folder **/ (root)**.
 
 ---
 
@@ -105,24 +99,15 @@ The site will rebuild from the restored file.
 
 ## Build stopped working after a GitHub update
 
-**Symptom:** The site was building fine, you didn't change anything, and then builds started failing with errors mentioning Ruby, Bundler, or a specific gem name like `ffi`, `nokogiri`, or `jekyll`.
+**Symptom:** The site was building fine, you didn't change anything, and then it stopped rebuilding or the content appears wrong.
 
-This is rare. The template pins Ruby to version 3.3 and installs gems from your `Gemfile.lock`, so routine GitHub infrastructure updates shouldn't affect your build. When gem issues do occur, they're usually caused by one of two things:
+This is uncommon with native GitHub Pages deployment because GitHub manages the build environment itself. If it does happen:
 
-- **A security update is needed.** Dependabot handles this automatically — it opens a pull request that updates `Gemfile.lock` to a patched version. Check your repo's Pull Requests tab for an open Dependabot PR. Merge it and the build should succeed.
-- **Someone manually edited `Gemfile` or `Gemfile.lock`** and introduced a conflict. Revert the edit using the steps in "I accidentally broke a file" above.
+- **Check Settings → Pages** to confirm the source is still set to **Deploy from a branch → main → / (root)**
+- **Check for a Dependabot PR** in your repo's Pull Requests tab. Dependabot occasionally opens PRs to update the `Gemfile.lock` with security patches. Merging it may resolve the issue.
+- **If the site builds but looks wrong,** it's more likely a content or config issue than a build infrastructure problem — see "I accidentally broke a file" above.
 
-**If neither of those applies and the build still fails:**
-
-Check whether the upstream template's `Gemfile.lock` has been updated recently:
-https://github.com/LPOregon/lp-affiliate-template/commits/main/Gemfile.lock
-
-If it has, copy the new version into your repo:
-1. Open `Gemfile.lock` in the upstream repo and click **Raw**
-2. Copy all the content
-3. Open `Gemfile.lock` in your repo, click the pencil to edit, paste the new content, and commit
-
-If that doesn't resolve it, file an issue on the template repo with a link to the failing build log.
+If none of those apply, check whether the upstream template's `Gemfile.lock` has been updated recently at [github.com/LPOregon/lp-affiliate-template/commits/main](https://github.com/LPOregon/lp-affiliate-template/commits/main). If it has, copy the new version into your repo using the steps in [06 — Updating the Template](06-updating-template.md). If the problem persists, file an issue on the template repo.
 
 ---
 
