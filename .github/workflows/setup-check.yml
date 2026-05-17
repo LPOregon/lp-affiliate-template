@@ -137,10 +137,13 @@ jobs:
           check _config.yml "your-org-here"               warning  "anedot_url"       "Set your Anedot link, or clear it to hide the Donate button"
           check _config.yml "your-signup-form-here"       warning  "mailing_list_url" "Set your signup form URL, or clear it to hide the Get Involved button"
 
-          # admin/config.yml — CRITICAL: CMS won't work until this is updated
-          check admin/config.yml "LPOregon/lp-affiliate-template" critical \
-            "admin/config.yml → repo" \
-            "Change to \`YourOrg/your-repo-name\` — **the CMS cannot save changes until this is fixed**"
+          # admin/config.yml — CRITICAL: must match GITHUB_REPOSITORY exactly
+          admin_repo=$(grep -m1 '^\s*repo:' admin/config.yml | sed 's/.*repo:\s*//' | tr -d ' "')
+          if [[ "$admin_repo" == "$GITHUB_REPOSITORY" ]]; then
+            passes+=("admin/config.yml → repo")
+          else
+            criticals+=("| 🔴 | \`admin/config.yml → repo\` | Change \`repo:\` to \`${GITHUB_REPOSITORY}\` — **the CMS cannot save changes until this is fixed** |")
+          fi
 
           # _data/site.yml — content placeholders
           check _data/site.yml "Jane Liberty"          warning  "officers"  "Replace sample officer names (CMS → Site Settings → Officers)"
