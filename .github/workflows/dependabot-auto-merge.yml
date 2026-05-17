@@ -1,0 +1,63 @@
+name: Dependabot auto-merge
+
+# Runs daily. Enables auto-merge on any open Dependabot PR that is at least
+# 48 hours old. The cooldown gives the security community time to detect and
+# report compromised package releases before they land in forks.
+#
+# Requires the repo's "Allow auto-merge" setting, which setup-check.yml
+# enables on first run.
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # daily at 08:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    name: Merge after cooldown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find and merge eligible PRs
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const COOLDOWN_MS = 48 * 60 * 60 * 1000;
+            const now = Date.now();
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner, repo, state: 'open', per_page: 100,
+            });
+
+            const candidates = prs.filter(pr => pr.user.login === 'dependabot[bot]');
+            if (candidates.length === 0) {
+              core.info('No open Dependabot PRs.');
+              return;
+            }
+
+            for (const pr of candidates) {
+              const ageMs = now - new Date(pr.created_at).getTime();
+              const ageH  = Math.floor(ageMs / 3600000);
+
+              if (ageMs < COOLDOWN_MS) {
+                core.info(`PR #${pr.number}: ${ageH}h old — cooldown not yet met (48h required).`);
+                continue;
+              }
+
+              core.info(`PR #${pr.number}: ${ageH}h old — enabling auto-merge.`);
+              try {
+                await github.graphql(`
+                  mutation($id: ID!) {
+                    enablePullRequestAutoMerge(input: { pullRequestId: $id, mergeMethod: SQUASH }) {
+                      pullRequest { number }
+                    }
+                  }
+                `, { id: pr.node_id });
+              } catch (e) {
+                core.warning(`PR #${pr.number}: ${e.message}`);
+              }
+            }

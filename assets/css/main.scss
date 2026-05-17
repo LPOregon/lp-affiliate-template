@@ -1,3 +1,5 @@
+---
+---
 /* =============================================================================
    LP Affiliate Site Template — main.css
    Soft Modern: rounded surfaces, subtle gradients, glassy nav, calmer palette
@@ -276,6 +278,7 @@ img { max-width: 100%; height: auto; display: block; }
   min-height: 620px;
   display: flex;
   align-items: stretch;
+  background-color: var(--ink-2);  /* fallback while image loads */
   background-size: cover;
   background-position: center 40%;
   box-shadow: var(--shadow-lg);

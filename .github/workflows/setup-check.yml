@@ -1,0 +1,196 @@
+name: Setup Check
+
+# Runs on every push to main and can be triggered manually.
+# Does two things:
+#   1. Bootstraps repo settings (Pages, Dependabot security updates, wiki, homepage URL)
+#   2. Checks _config.yml / admin/config.yml / _data/site.yml for unconfigured
+#      placeholder values and reports results in the job summary.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: setup-check
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  administration: write
+
+jobs:
+  setup-check:
+    name: Setup Check
+    runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.repository }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      # ── Bootstrap repository settings ─────────────────────────────────────────
+      # Each action is wrapped in try/catch so a permission error on one doesn't
+      # block the others. All failures surface as warnings, not job failures.
+      - name: Bootstrap repository settings
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        continue-on-error: true
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+
+            // 1. Enable GitHub Pages — Deploy from main /
+            try {
+              await github.rest.repos.createPagesSite({
+                owner, repo,
+                build_type: 'legacy',
+                source: { branch: 'main', path: '/' },
+              });
+              core.info('✅ GitHub Pages enabled (Deploy from main /).');
+            } catch (e) {
+              if (e.status === 409) {
+                core.info('ℹ️  GitHub Pages already enabled.');
+              } else {
+                core.warning(
+                  `Could not enable Pages automatically (${e.message}). ` +
+                  'Enable manually: Settings → Pages → Deploy from a branch → main → /'
+                );
+              }
+            }
+
+            // 2. Enable Dependabot security updates (automated PRs for vulnerabilities)
+            try {
+              await github.rest.repos.enableAutomatedSecurityFixes({ owner, repo });
+              core.info('✅ Dependabot security updates enabled.');
+            } catch (e) {
+              core.warning(`Dependabot security updates: ${e.message}`);
+            }
+
+            // 3. Disable the wiki and enable auto-merge (needed for dependabot-auto-merge.yml)
+            try {
+              await github.rest.repos.update({ owner, repo, has_wiki: false, allow_auto_merge: true });
+              core.info('✅ Wiki disabled. Auto-merge enabled.');
+            } catch (e) {
+              core.warning(`Repo settings: ${e.message}`);
+            }
+
+            // 4. Set the repo homepage URL from _config.yml once the user has
+            //    updated it away from the template placeholder.
+            try {
+              const fs = require('fs');
+              const cfg = fs.readFileSync('_config.yml', 'utf8');
+              const urlMatch    = cfg.match(/^url:\s*"([^"]+)"/m);
+              const baseurlMatch = cfg.match(/^baseurl:\s*"([^"]*)"/m);
+              const descMatch   = cfg.match(/^description:\s*"([^"]+)"/m);
+
+              const siteUrl = urlMatch ? urlMatch[1] : '';
+              const baseurl  = baseurlMatch ? baseurlMatch[1] : '';
+
+              if (siteUrl && !siteUrl.includes('lporegon.github.io')) {
+                const homepage = siteUrl + baseurl;
+                const description = descMatch ? descMatch[1] : undefined;
+                await github.rest.repos.update({ owner, repo, homepage, description });
+                core.info(`✅ Repo homepage set to ${homepage}.`);
+              }
+            } catch (e) {
+              core.warning(`Homepage update: ${e.message}`);
+            }
+
+      # ── Configuration check ───────────────────────────────────────────────────
+      - name: Check configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          warnings=()
+          criticals=()
+          passes=()
+
+          check() {
+            local file="$1" pattern="$2" severity="$3" label="$4" hint="$5"
+            if grep -qF -- "$pattern" "$file" 2>/dev/null; then
+              if [[ "$severity" == critical ]]; then
+                criticals+=("| 🔴 | \`${label}\` | ${hint} |")
+              else
+                warnings+=("| ⚠️ | \`${label}\` | ${hint} |")
+              fi
+            else
+              passes+=("${label}")
+            fi
+          }
+
+          # _config.yml — identity & URLs
+          check _config.yml "Podunk Libertarians"          warning  "title"            "Replace with your affiliate name"
+          check _config.yml "lporegon.github.io"           warning  "url"              "Set to your GitHub Pages URL, e.g. \`https://yourorg.github.io\`"
+          check _config.yml "/lp-affiliate-template"       warning  "baseurl"          "Set to your repo name, e.g. \`/your-repo-name\` (or \`\"\"\` for a custom domain)"
+          check _config.yml "podunk@example.com"           warning  "email"            "Replace with your affiliate's contact address, or clear it"
+          check _config.yml "Jerkwater and Unincorporated" warning  "geography"        "Set to your county or area name"
+          check _config.yml "Podunk Libertarians PAC"      warning  "paid_for_by"      "Set your legal disclaimer"
+
+          # _config.yml — optional integrations (warn only if placeholder is still present)
+          check _config.yml "PodunkLiberty"                warning  "twitter"          "Update or clear (blank hides the link)"
+          check _config.yml "PodunkLibertarians"           warning  "facebook"         "Update or clear (blank hides the link)"
+          check _config.yml "podunklibertarians"           warning  "instagram"        "Update or clear (blank hides the link)"
+          check _config.yml "lp[state].org"               warning  "lp_state"         "Set your state party URL"
+          check _config.yml "LP [State]"                  warning  "state_party_name" "Set your state party name (shown in footer and About)"
+          check _config.yml "your-org-here"               warning  "anedot_url"       "Set your Anedot link, or clear it to hide the Donate button"
+          check _config.yml "your-signup-form-here"       warning  "mailing_list_url" "Set your signup form URL, or clear it to hide the Get Involved button"
+
+          # admin/config.yml — CRITICAL: CMS won't work until this is updated
+          check admin/config.yml "LPOregon/lp-affiliate-template" critical \
+            "admin/config.yml → repo" \
+            "Change to \`YourOrg/your-repo-name\` — **the CMS cannot save changes until this is fixed**"
+
+          # _data/site.yml — content placeholders
+          check _data/site.yml "Jane Liberty"          warning  "officers"  "Replace sample officer names (CMS → Site Settings → Officers)"
+          check _data/site.yml "[State] Affiliate"     warning  "hero_sub"  "Update your subheadline (CMS → Site Settings → Hero subheadline)"
+          check _data/site.yml "Jerkwater Brewing Co." warning  "meetup"    "Update your meeting details (CMS → Site Settings → Meetup)"
+
+          # ── Write job summary ────────────────────────────────────────────────
+          total=$(( ${#criticals[@]} + ${#warnings[@]} + ${#passes[@]} ))
+          done_count=${#passes[@]}
+
+          {
+            echo "## Setup Check"
+            echo ""
+            echo "**${done_count} of ${total} items configured**"
+            echo ""
+
+            if [[ ${#criticals[@]} -gt 0 ]]; then
+              echo "### 🔴 Fix these first"
+              echo "| | Field | What to do |"
+              echo "|---|---|---|"
+              printf '%s\n' "${criticals[@]}"
+              echo ""
+            fi
+
+            if [[ ${#warnings[@]} -gt 0 ]]; then
+              echo "### ⚠️ Still needs your attention"
+              echo "| | Field | What to do |"
+              echo "|---|---|---|"
+              printf '%s\n' "${warnings[@]}"
+              echo ""
+            fi
+
+            if [[ ${#passes[@]} -gt 0 ]]; then
+              echo "### ✅ Configured"
+              printf -- '- %s\n' "${passes[@]}"
+              echo ""
+            fi
+
+            if [[ ${#criticals[@]} -eq 0 && ${#warnings[@]} -eq 0 ]]; then
+              echo "> 🎉 **All items configured.** Your site is fully set up!"
+              echo ""
+            fi
+
+            echo "---"
+            echo "_[Editing guide](https://github.com/${REPO}/blob/main/docs/04-editing-content.md) · [Troubleshooting](https://github.com/${REPO}/blob/main/docs/05-troubleshooting.md)_"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # Fail if critical issues remain so the commit check badge turns red
+          if [[ ${#criticals[@]} -gt 0 ]]; then
+            echo "::error::${#criticals[@]} critical issue(s) — see the job summary for details."
+            exit 1
+          fi

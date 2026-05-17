@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSP: if you add a Brevo iframe, replace "https:" in frame-src with your specific Brevo embed domain. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://gc.zgo.at https://embed.lu.ma; img-src 'self' data:; frame-src https:; connect-src 'self' https:; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ site.description }}">
   <link rel="icon" type="image/png" href="{{ '/assets/images/logo.png' | relative_url }}">
@@ -10,7 +12,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  {% if page.url == '/' %}
+  <link rel="preload" as="image" href="{{ '/assets/images/skyline.jpg' | relative_url }}">
+  {% endif %}
   {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
+  <!-- Luma does not publish versioned URLs; this always loads their latest script. -->
   <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
   {% endif %}
   {% seo %}
@@ -21,8 +27,11 @@
   {{ content }}
   {% include footer.html %}
   <script>
-    document.querySelector('.nav-toggle').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('open');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    navToggle?.addEventListener('click', function() {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
     });
   </script>
   {% if site.goatcounter_code %}

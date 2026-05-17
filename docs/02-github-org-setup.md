@@ -37,14 +37,18 @@ Don't be the only owner. Invite at least one other trusted officer as an **Owner
 
 You now have your own copy of the template. All your edits happen here — you're not editing the original template.
 
-## Step 5: Enable GitHub Pages
+## Step 5: Enable GitHub Actions
 
-1. In your forked repo, go to **Settings** → **Pages** (left sidebar)
-2. Under "Source," select **Deploy from a branch**
-3. Under "Branch," select **main** and **/ (root)**, then click **Save**
-4. Wait about 60 seconds — you'll see a URL like `https://your-org.github.io/your-repo-name/`
+The template includes an automated setup check that runs every time you push a change. It enables GitHub Pages for you, turns on security updates, and checks your config for unconfigured placeholder values.
 
-Your site is now live (with placeholder content).
+To enable it on your fork:
+
+1. In your forked repo, click the **Actions** tab
+2. Click **I understand my workflows, go ahead and enable them**
+
+That's all. Actions will run automatically on your next commit.
+
+> **If you skip this step:** you can still use the site, but you'll need to enable GitHub Pages manually (Settings → Pages → Deploy from a branch → main → /) and you won't get the automated setup checklist.
 
 ## Step 6: Update two config values
 
@@ -85,7 +89,11 @@ Click **Commit changes**.
 
 ## Step 7: Verify
 
-Wait about 60 seconds for GitHub Pages to rebuild, then visit your site URL. You should see the template site with Podunk placeholder content.
+After committing the config changes above, GitHub will rebuild your site (about 60 seconds). Check two things:
+
+**Check your live site:** visit `https://your-org.github.io/your-repo-name/`. You should see the template with Podunk placeholder content — your changes will appear shortly.
+
+**Check the setup report:** go to the **Actions** tab in your repo → click the most recent **Setup Check** run → click **Setup Check** in the left sidebar → click **Check configuration** to expand it. The job summary shows which fields still need your attention. The red 🔴 item (`admin/config.yml → repo`) must be fixed before the CMS will work; the yellow ⚠️ items are content you'll fill in through the CMS.
 
 Visit `https://your-site-url/admin/` to see the CMS login screen. You'll set up authentication in the next step.
 

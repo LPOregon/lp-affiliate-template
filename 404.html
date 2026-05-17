@@ -1,0 +1,16 @@
+---
+layout: default
+title: Page Not Found
+permalink: /404.html
+---
+<section class="news-archive" style="min-height: 70vh; display: flex; align-items: center;">
+  <div class="section-container" style="padding-top: 64px; padding-bottom: 64px;">
+    <p class="eyebrow">{{ site.title }}</p>
+    <h1 style="font-family: var(--display); font-size: clamp(44px, 6vw, 76px); font-weight: 400; letter-spacing: -0.028em; line-height: 1; color: var(--ink); margin: 18px 0 24px;">Page Not Found</h1>
+    <p style="font-size: 17px; color: var(--text-2); max-width: 480px; line-height: 1.65; margin-bottom: 36px;">The page you're looking for doesn't exist or may have moved. Try the links below.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="{{ '/' | relative_url }}" class="btn btn-primary">Go Home</a>
+      <a href="{{ '/news' | relative_url }}" class="btn btn-secondary" style="color: var(--ink); background: var(--surface); border-color: var(--hairline-2);">News</a>
+    </div>
+  </div>
+</section>

@@ -68,11 +68,15 @@ These files contain no affiliate-specific content and can be copied wholesale fr
 - `_layouts/post.html`
 - `_includes/nav.html`
 - `_includes/footer.html`
-- `assets/css/main.css`
+- `assets/css/main.scss`
 - `index.html`
 - `news.html`
+- `404.html`
 - `Gemfile`
 - `.gitignore`
+- `.github/workflows/setup-check.yml`
+- `.github/workflows/dependabot-auto-merge.yml`
+- `.github/dependabot.yml`
 
 ---
 
@@ -96,6 +100,12 @@ When updating these files from upstream, copy only the structural changes (new f
 GitHub offers a **Sync fork** button on your fork's main page. This merges upstream changes into your fork automatically. It works well if you haven't edited any of the same files that changed upstream. If there are conflicts (you and upstream both changed the same file), GitHub will flag them and you'll need to resolve them manually.
 
 For most affiliates, the manual copy approach above is safer and easier to understand.
+
+---
+
+## Jekyll Version Cap
+
+This template uses native GitHub Pages deployment, which builds with the `github-pages` gem. That gem locks Jekyll to version 3.x (currently 3.10). Jekyll 4.x features are not available. This is an intentional trade-off — native deployment requires no GitHub Actions setup, but gives up version choice. If you need Jekyll 4+, you would need to reintroduce a custom Actions workflow.
 
 ---
 

@@ -19,11 +19,13 @@ A free, professional website template for your LP affiliate. It includes:
 
 | Step | Time | Guide |
 |------|------|-------|
-| 1. Create a GitHub org and fork the template | 10 min | [GitHub Org Setup](02-github-org-setup.md) |
+| 1. Create a GitHub org, fork the template, and enable Actions | 10 min | [GitHub Org Setup](02-github-org-setup.md) |
 | 2. Generate a personal access token for the CMS | 5 min | [CMS Authentication](03-cms-auth-setup.md) |
 | 3. Log into /admin and fill in your content | 15–30 min | [Editing Content](04-editing-content.md) |
 
 That's it. No server to maintain, no monthly bill, no web developer needed after initial setup.
+
+The template includes an automated setup check: every time you push a change, it verifies your configuration and reports any remaining placeholder values in plain English in the Actions tab. GitHub Pages is enabled for you automatically on your first push.
 
 ## How it works
 

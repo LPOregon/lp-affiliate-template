@@ -104,10 +104,10 @@ The site will rebuild from the restored file.
 This is uncommon with native GitHub Pages deployment because GitHub manages the build environment itself. If it does happen:
 
 - **Check Settings → Pages** to confirm the source is still set to **Deploy from a branch → main → / (root)**
-- **Check for a Dependabot PR** in your repo's Pull Requests tab. Dependabot occasionally opens PRs to update the `Gemfile.lock` with security patches. Merging it may resolve the issue.
+- **Check for a Dependabot PR** in your repo's Pull Requests tab. Dependabot occasionally opens PRs to update the `Gemfile` with security patches. Merging it may resolve the issue.
 - **If the site builds but looks wrong,** it's more likely a content or config issue than a build infrastructure problem — see "I accidentally broke a file" above.
 
-If none of those apply, check whether the upstream template's `Gemfile.lock` has been updated recently at [github.com/LPOregon/lp-affiliate-template/commits/main](https://github.com/LPOregon/lp-affiliate-template/commits/main). If it has, copy the new version into your repo using the steps in [06 — Updating the Template](06-updating-template.md). If the problem persists, file an issue on the template repo.
+If none of those apply, check the upstream template's [recent commits](https://github.com/LPOregon/lp-affiliate-template/commits/main) and [CHANGELOG](https://github.com/LPOregon/lp-affiliate-template/blob/main/CHANGELOG.md) for any related fixes. If there are, apply the relevant file updates manually using the steps in [06 — Updating the Template](06-updating-template.md). If the problem persists, file an issue on the template repo.
 
 ---
 
