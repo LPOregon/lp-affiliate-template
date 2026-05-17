@@ -18,7 +18,6 @@ concurrency:
 permissions:
   contents: read
   pages: write
-  administration: write
 
 jobs:
   setup-check:
