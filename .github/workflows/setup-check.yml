@@ -2,9 +2,13 @@ name: Setup Check
 
 # Runs on every push to main and can be triggered manually.
 # Does two things:
-#   1. Bootstraps repo settings (Pages, Dependabot security updates, wiki, homepage URL)
+#   1. Enables GitHub Pages (Deploy from main /) — needs only `pages: write`.
 #   2. Checks _config.yml / admin/config.yml / _data/site.yml for unconfigured
 #      placeholder values and reports results in the job summary.
+#
+# Settings that require admin rights (Dependabot security updates, wiki,
+# auto-merge, homepage URL) live in bootstrap.yml — a manual, one-time workflow —
+# so this automatic push workflow never carries an `administration: write` token.
 
 on:
   push:
@@ -30,17 +34,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      # ── Bootstrap repository settings ─────────────────────────────────────────
-      # Each action is wrapped in try/catch so a permission error on one doesn't
-      # block the others. All failures surface as warnings, not job failures.
-      - name: Bootstrap repository settings
+      # ── Enable GitHub Pages (Deploy from main /) ──────────────────────────────
+      # Needs only `pages: write`. Admin-only settings live in bootstrap.yml.
+      - name: Enable GitHub Pages
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         continue-on-error: true
         with:
           script: |
             const { owner, repo } = context.repo;
-
-            // 1. Enable GitHub Pages — Deploy from main /
             try {
               await github.rest.repos.createPagesSite({
                 owner, repo,
@@ -57,44 +58,6 @@ jobs:
                   'Enable manually: Settings → Pages → Deploy from a branch → main → /'
                 );
               }
-            }
-
-            // 2. Enable Dependabot security updates (automated PRs for vulnerabilities)
-            try {
-              await github.rest.repos.enableAutomatedSecurityFixes({ owner, repo });
-              core.info('✅ Dependabot security updates enabled.');
-            } catch (e) {
-              core.warning(`Dependabot security updates: ${e.message}`);
-            }
-
-            // 3. Disable the wiki and enable auto-merge (needed for dependabot-auto-merge.yml)
-            try {
-              await github.rest.repos.update({ owner, repo, has_wiki: false, allow_auto_merge: true });
-              core.info('✅ Wiki disabled. Auto-merge enabled.');
-            } catch (e) {
-              core.warning(`Repo settings: ${e.message}`);
-            }
-
-            // 4. Set the repo homepage URL from _config.yml once the user has
-            //    updated it away from the template placeholder.
-            try {
-              const fs = require('fs');
-              const cfg = fs.readFileSync('_config.yml', 'utf8');
-              const urlMatch    = cfg.match(/^url:\s*"([^"]+)"/m);
-              const baseurlMatch = cfg.match(/^baseurl:\s*"([^"]*)"/m);
-              const descMatch   = cfg.match(/^description:\s*"([^"]+)"/m);
-
-              const siteUrl = urlMatch ? urlMatch[1] : '';
-              const baseurl  = baseurlMatch ? baseurlMatch[1] : '';
-
-              if (siteUrl && !siteUrl.includes('lporegon.github.io')) {
-                const homepage = siteUrl + baseurl;
-                const description = descMatch ? descMatch[1] : undefined;
-                await github.rest.repos.update({ owner, repo, homepage, description });
-                core.info(`✅ Repo homepage set to ${homepage}.`);
-              }
-            } catch (e) {
-              core.warning(`Homepage update: ${e.message}`);
             }
 
       # ── Configuration check ───────────────────────────────────────────────────

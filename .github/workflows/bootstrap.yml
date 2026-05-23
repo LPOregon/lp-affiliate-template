@@ -1,0 +1,78 @@
+name: Bootstrap repository settings
+
+# One-time manual setup. Run this once after forking (Actions tab → Bootstrap
+# repository settings → Run workflow) to apply repository settings that require
+# admin rights:
+#   - Enable Dependabot security updates
+#   - Disable the wiki and enable auto-merge (needed for dependabot-auto-merge.yml)
+#   - Set the repo homepage URL from _config.yml (once you've set your own URL)
+#
+# This is a separate manual workflow — rather than part of the automatic push
+# workflow — so an `administration: write` token is only ever issued when you
+# deliberately run it, not on every push.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: bootstrap
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  administration: write
+
+jobs:
+  bootstrap:
+    name: Bootstrap repository settings
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      # Each call is wrapped in try/catch so a permission error on one doesn't
+      # block the others. All failures surface as warnings, not job failures.
+      - name: Apply repository settings
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+
+            // 1. Enable Dependabot security updates (automated PRs for vulnerabilities)
+            try {
+              await github.rest.repos.enableAutomatedSecurityFixes({ owner, repo });
+              core.info('✅ Dependabot security updates enabled.');
+            } catch (e) {
+              core.warning(`Dependabot security updates: ${e.message}`);
+            }
+
+            // 2. Disable the wiki and enable auto-merge (needed for dependabot-auto-merge.yml)
+            try {
+              await github.rest.repos.update({ owner, repo, has_wiki: false, allow_auto_merge: true });
+              core.info('✅ Wiki disabled. Auto-merge enabled.');
+            } catch (e) {
+              core.warning(`Repo settings: ${e.message}`);
+            }
+
+            // 3. Set the repo homepage URL from _config.yml once the user has
+            //    updated it away from the template placeholder.
+            try {
+              const fs = require('fs');
+              const cfg = fs.readFileSync('_config.yml', 'utf8');
+              const urlMatch    = cfg.match(/^url:\s*"([^"]+)"/m);
+              const baseurlMatch = cfg.match(/^baseurl:\s*"([^"]*)"/m);
+              const descMatch   = cfg.match(/^description:\s*"([^"]+)"/m);
+
+              const siteUrl = urlMatch ? urlMatch[1] : '';
+              const baseurl  = baseurlMatch ? baseurlMatch[1] : '';
+
+              if (siteUrl && !siteUrl.includes('lporegon.github.io')) {
+                const homepage = siteUrl + baseurl;
+                const description = descMatch ? descMatch[1] : undefined;
+                await github.rest.repos.update({ owner, repo, homepage, description });
+                core.info(`✅ Repo homepage set to ${homepage}.`);
+              }
+            } catch (e) {
+              core.warning(`Homepage update: ${e.message}`);
+            }

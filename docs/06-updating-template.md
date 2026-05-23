@@ -69,12 +69,15 @@ These files contain no affiliate-specific content and can be copied wholesale fr
 - `_includes/nav.html`
 - `_includes/footer.html`
 - `assets/css/main.scss`
+- `assets/js/main.js`
 - `index.html`
 - `news.html`
 - `404.html`
 - `Gemfile`
 - `.gitignore`
 - `.github/workflows/setup-check.yml`
+- `.github/workflows/bootstrap.yml`
+- `.github/workflows/build.yml`
 - `.github/workflows/dependabot-auto-merge.yml`
 - `.github/dependabot.yml`
 

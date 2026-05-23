@@ -39,7 +39,7 @@ You now have your own copy of the template. All your edits happen here — you'r
 
 ## Step 5: Enable GitHub Actions
 
-The template includes an automated setup check that runs every time you push a change. It enables GitHub Pages for you, turns on security updates, and checks your config for unconfigured placeholder values.
+The template includes an automated setup check that runs every time you push a change. It enables GitHub Pages for you and checks your config for unconfigured placeholder values.
 
 To enable it on your fork:
 
@@ -49,6 +49,17 @@ To enable it on your fork:
 That's all. Actions will run automatically on your next commit.
 
 > **If you skip this step:** you can still use the site, but you'll need to enable GitHub Pages manually (Settings → Pages → Deploy from a branch → main → /) and you won't get the automated setup checklist.
+
+### Optional: run the one-time Bootstrap workflow
+
+A second workflow, **Bootstrap repository settings**, applies settings that need repository-admin rights: it turns on Dependabot security updates, disables the wiki, enables auto-merge (so Dependabot updates can merge after their cooldown), and sets your repo's homepage URL. It only runs when you trigger it — that way an admin-level token is never issued on an ordinary push.
+
+To run it once after forking:
+
+1. In the **Actions** tab, click **Bootstrap repository settings** in the left sidebar
+2. Click **Run workflow** → **Run workflow**
+
+This is optional — your site works without it — but it keeps your fork's dependencies patched automatically.
 
 ## Step 6: Update two config values
 

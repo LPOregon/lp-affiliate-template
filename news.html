@@ -4,12 +4,12 @@ title: News & Announcements
 ---
 <section class="news-archive">
   <div class="section-container">
-    <p class="eyebrow">{{ site.title }}</p>
+    <p class="eyebrow">{{ site.title | escape }}</p>
     <h1>News &amp; Announcements</h1>
     {% for post in site.posts %}
       <article class="news-card">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
         <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
       </article>
     {% endfor %}

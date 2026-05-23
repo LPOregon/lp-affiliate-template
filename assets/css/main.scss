@@ -279,6 +279,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   align-items: stretch;
   background-color: var(--ink-2);  /* fallback while image loads */
+  background-image: url('{{ "/assets/images/skyline.jpg" | relative_url }}');
   background-size: cover;
   background-position: center 40%;
   box-shadow: var(--shadow-lg);
@@ -632,6 +633,48 @@ img { max-width: 100%; height: auto; display: block; }
 
 .news-archive .news-card {
   margin-bottom: 16px;
+}
+
+/* --- 404 page -------------------------------------------------------------- */
+
+.page-404 {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.page-404 .section-container {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.page-404 .section-container h1 {
+  margin-bottom: 24px;
+}
+
+.page-404 .btn-secondary {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--hairline-2);
+}
+
+.page-404 .btn-secondary:hover {
+  background: var(--paper-2);
+  border-color: var(--ink);
+}
+
+.page-404-desc {
+  font-size: 17px;
+  color: var(--text-2);
+  max-width: 480px;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.page-404-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 /* --- About ------------------------------------------------------------------ */
