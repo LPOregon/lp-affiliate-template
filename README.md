@@ -25,6 +25,8 @@ This template is maintained on a volunteer basis. Issues and pull requests are w
 
 **Total setup time: 30–60 minutes.** Full walkthrough starts at [docs/01-getting-started.md](docs/01-getting-started.md).
 
+> **Note on the Bootstrap workflow.** `.github/workflows/bootstrap.yml` is a one-time, manually-triggered (`workflow_dispatch`) setup step. GitHub generates empty "No jobs were run" runs for it on every push and emails about them, so **after you've run Bootstrap once during setup, disable it** to stop the noise: Actions tab → Bootstrap → "Disable workflow" (or `gh workflow disable bootstrap.yml`). This is per-repository state and is **not** copied to forks — every fork starts with the workflow enabled and must disable it after its own setup. (Forks may also need to click "I understand my workflows, go ahead and enable them" on the Actions tab first, which is standard GitHub behavior for any forked repo.) On this upstream template repo it is already disabled.
+
 ## Monthly maintenance
 
 Depends on which RSVP tool you use:
