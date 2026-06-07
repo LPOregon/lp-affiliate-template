@@ -62,3 +62,4 @@ exclude:
   - README.md
   - docs/
   - LICENSE
+  - vendor/
