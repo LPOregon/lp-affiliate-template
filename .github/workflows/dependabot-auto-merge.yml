@@ -58,6 +58,20 @@ jobs:
                   }
                 `, { id: pr.node_id });
               } catch (e) {
-                core.warning(`PR #${pr.number}: ${e.message}`);
+                // "Pull request is in clean status" means there's nothing left
+                // to wait on (all required checks already passed), so the
+                // auto-merge mutation refuses to arm — merge it directly instead.
+                if (e.message.includes('clean status')) {
+                  core.info(`PR #${pr.number}: already clean — merging directly.`);
+                  try {
+                    await github.rest.pulls.merge({
+                      owner, repo, pull_number: pr.number, merge_method: 'squash',
+                    });
+                  } catch (mergeErr) {
+                    core.warning(`PR #${pr.number}: ${mergeErr.message}`);
+                  }
+                } else {
+                  core.warning(`PR #${pr.number}: ${e.message}`);
+                }
               }
             }
