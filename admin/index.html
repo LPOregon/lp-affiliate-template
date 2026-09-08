@@ -4,11 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
+  <!-- Second layer behind the SRI pin below: this is the page where a write-scoped
+       PAT gets pasted, so it gets its own policy rather than inheriting nothing.
+       connect-src covers the GitHub API/OAuth calls Sveltia makes as a Git backend;
+       widen if the console shows a real CSP violation from CMS use. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.github.com https://github.com https://unpkg.com; base-uri 'none'; form-action 'self'">
   <title>Content Manager</title>
 </head>
 <body>
   <!-- Sveltia CMS — drop-in replacement for Decap CMS -->
   <!-- Pin the version so a new release doesn't auto-execute on the CMS page. Bump deliberately and update CHANGELOG. -->
-  <script type="module" src="https://unpkg.com/@sveltia/cms@0.161.1/dist/sveltia-cms.js"></script>
+  <!-- To update: bump version, recompute hash: curl -sL <url> | openssl dgst -sha384 -binary | base64 -->
+  <script src="https://unpkg.com/@sveltia/cms@0.161.1/dist/sveltia-cms.js"
+          integrity="sha384-73xuUlg08BTBZdQG2hv0prMWdg8uBAPxDQ40S5dVTCA88cshT28o3UQwQwvLh5Xs"
+          crossorigin="anonymous"
+          type="module"></script>
 </body>
 </html>
