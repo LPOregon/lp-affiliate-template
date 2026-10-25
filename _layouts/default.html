@@ -3,28 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- CSP: if you add a Brevo iframe, replace "https:" in frame-src with your specific Brevo embed domain. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://gc.zgo.at https://embed.lu.ma; img-src 'self' data:; frame-src https:; connect-src 'self' https:; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <!-- CSP: frame-src narrowed to Brevo form domains; connect/img cover only GoatCounter + Luma. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://gc.zgo.at https://embed.lu.ma; img-src 'self' data: https://*.goatcounter.com; frame-src 'self' https://*.brevo.com https://*.brevoform.com https://*.sibforms.com https://lu.ma https://*.lu.ma https://luma.com https://*.luma.com; connect-src 'self' https://*.goatcounter.com https://embed.lu.ma https://*.lu.ma https://luma.com https://*.luma.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ site.description }}">
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta name="theme-color" content="#1f1f22">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" type="image/png" href="{{ '/assets/images/logo.png' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   {% if page.url == '/' %}
-  <link rel="preload" as="image" href="{{ '/assets/images/skyline.jpg' | relative_url }}">
+  <link rel="preload" as="image" fetchpriority="high" type="image/webp" href="{{ '/assets/images/skyline.webp' | relative_url }}">
   {% endif %}
   {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
   <!-- Luma does not publish versioned URLs; this always loads their latest script. -->
-  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js" defer></script>
   {% endif %}
   {% seo %}
   {% feed_meta %}
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   {% include nav.html %}
+  <main id="main">
   {{ content }}
+  </main>
   {% include footer.html %}
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
   {% if site.goatcounter_code %}
